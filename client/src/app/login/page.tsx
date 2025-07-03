@@ -1,18 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "@/components/common/Button";
 import { UsaStates } from "usa-states";
 import Link from "next/link";
 import api from "@/lib/api";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { jwtDecode } from "jwt-decode";
+import { setCookie } from "@/lib/cookie";
+
 type IType = "login" | "register" | "forgotPassword";
 
 export default function Login() {
   const router = useRouter();
-  const { setUser, setIsExpired, setExpiredDate } = useAuth();
+  const pathname = usePathname();
+  const { user, setUser, setIsExpired, setExpiredDate } = useAuth();
   const [type, setType] = useState<IType>("login");
   const [error, setError] = useState<string | null>(null);
   const allStates = new UsaStates().states;
@@ -71,10 +74,7 @@ export default function Login() {
             setError(response.data.error);
           } else {
             setError(null);
-            localStorage.setItem(
-              "Bearer_token",
-              `Bearer ${response.data.token}`
-            );
+            setCookie("Bearer_token", `Bearer ${response.data.token}`);
             setUser(jwtDecode(response.data.token));
             setIsExpired(response.data.expired);
             if (response.data.expiredDate) {
@@ -104,12 +104,15 @@ export default function Login() {
 
     api
       .post("/users/login", { email, password })
-      .then((response) => {
+      .then(async (response) => {
         if (response.data.error) {
           setError(response.data.error);
         } else {
           setError(null);
-          localStorage.setItem("Bearer_token", `Bearer ${response.data.token}`);
+
+          setCookie("Bearer_token", `Bearer ${response.data.token}`);
+
+          await (() => new Promise((resolve) => setTimeout(resolve, 2000)))();
           setUser(jwtDecode(response.data.token));
           router.push("/account");
         }
@@ -119,6 +122,7 @@ export default function Login() {
         setError("Login failed. Please check your credentials.");
       });
   };
+
   return (
     <div>
       <div className="bg-[url('/images/gridbg.png')] bg-cover bg-no-repeat bg-blend-luminosity bg-gray-800">

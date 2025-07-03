@@ -4,31 +4,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { CgChevronRight } from "react-icons/cg";
 import { useAuth } from "@/contexts/AuthContext";
-import { useRouter } from "next/navigation";
+import { deleteCookie } from "@/lib/cookie";
 const UpLayout = () => {
   const { user, setUser } = useAuth();
   const [showDropdown, setShowDropdown] = useState(false);
-  const router = useRouter();
 
   const handleLogout = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const target = e.target as HTMLAnchorElement;
     if (target.pathname === "/logout") {
-      e.preventDefault();
-      router.push("/");
+      deleteCookie("Bearer_token");
       setShowDropdown(false);
-      setTimeout(() => {
-        localStorage.removeItem("Bearer_token");
-        setUser({
-          id: "",
-          username: "",
-          first_name: "",
-          last_name: "",
-          email: "",
-          status: 0,
-          created_at: "",
-          updated_at: "",
-        });
-      }, 1000);
+      setUser({
+        id: "",
+        username: "",
+        first_name: "",
+        last_name: "",
+        email: "",
+        status: 0,
+        created_at: "",
+        updated_at: "",
+      });
     }
   };
 

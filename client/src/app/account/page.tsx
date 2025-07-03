@@ -1,26 +1,16 @@
 "use client";
 import Button from "@/components/common/Button";
 import { useAuth } from "@/contexts/AuthContext";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import Link from "next/link";
 
 export default function AccountPage() {
   const { user, isExpired, expiredDate } = useAuth();
-  const router = useRouter();
-  const path = usePathname();
 
   const formattedExpiredDate = expiredDate.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
-
-  useEffect(() => {
-    if (user.id === undefined) return;
-    if (user.id === "" && path === "/account") {
-      router.push("/login");
-    }
-  }, [user.id, path]);
 
   return (
     <div className="bg-[url('/images/gridbg.png')] bg-cover bg-no-repeat bg-blend-luminosity bg-gray-800">
@@ -93,11 +83,18 @@ export default function AccountPage() {
                           Cheatsheets, rankings, projections, and so much more
                         </div>
                         <div className="p-4">
-                          <Button
-                            isFullWidth
-                            className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
-                            text="ACCESS"
-                          />
+                          <Link
+                            href={
+                              "https://www.footballguys.com/rotopass/authentication?session_key="
+                            }
+                            target="_blank"
+                          >
+                            <Button
+                              isFullWidth
+                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
+                              text="ACCESS"
+                            />
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -116,11 +113,18 @@ export default function AccountPage() {
                           special discount code to upgrade to tier 2.
                         </div>
                         <div className="p-4">
-                          <Button
-                            isFullWidth
-                            className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
-                            text="ACCESS"
-                          />
+                          <Link
+                            href={
+                              "https://www.rotopass.com/redeem/fantasylife?session_key="
+                            }
+                            target="_blank"
+                          >
+                            <Button
+                              isFullWidth
+                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
+                              text="ACCESS"
+                            />
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -137,11 +141,18 @@ export default function AccountPage() {
                           Take me to the most accurate rankings since 2010
                         </div>
                         <div className="p-4">
-                          <Button
-                            isFullWidth
-                            className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
-                            text="Get Code"
-                          />
+                          <Link
+                            href={
+                              "https://www.4for4.com/free-subscription/rotopass25?session_key="
+                            }
+                            target="_blank"
+                          >
+                            <Button
+                              isFullWidth
+                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
+                              text="Access"
+                            />
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -158,11 +169,18 @@ export default function AccountPage() {
                           The most indepth dynasty coverage in the industry
                         </div>
                         <div className="p-4">
-                          <Button
-                            isFullWidth
-                            className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
-                            text="Get Code"
-                          />
+                          <Link
+                            href={
+                              "https://dynastyleaguefootball.com/register/annual-rotopass/?coupon=ROTOPASS2025WIN&session_key="
+                            }
+                            target="_blank"
+                          >
+                            <Button
+                              isFullWidth
+                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
+                              text="Access"
+                            />
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -180,11 +198,18 @@ export default function AccountPage() {
                           RotoViz team
                         </div>
                         <div className="p-4">
-                          <Button
-                            isFullWidth
-                            className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
-                            text="Get Code"
-                          />
+                          <Link
+                            href={
+                              "https://www.rotoviz.com/rotopass?session_key="
+                            }
+                            target="_blank"
+                          >
+                            <Button
+                              isFullWidth
+                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
+                              text="Access"
+                            />
+                          </Link>
                         </div>
                       </div>
                     </div>

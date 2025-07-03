@@ -9,6 +9,7 @@ import {
 } from "react";
 import { jwtDecode } from "jwt-decode";
 import api from "@/lib/api";
+import { deleteCookie, getCookie } from "@/lib/cookie";
 
 interface AuthContextType {
   user: IUser;
@@ -42,9 +43,9 @@ const AuthContext = createContext<AuthContextType>({
   },
   isExpired: null,
   expiredDate: new Date(),
-  setUser: () => { },
-  setIsExpired: () => { },
-  setExpiredDate: () => { },
+  setUser: () => {},
+  setIsExpired: () => {},
+  setExpiredDate: () => {},
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
@@ -58,6 +59,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     created_at: undefined,
     updated_at: undefined,
   });
+  
   const [isExpired, setIsExpired] = useState<boolean | null>(null);
   const [expiredDate, setExpiredDate] = useState(new Date());
   const checkExpires = async (userId: string | undefined) => {
@@ -69,8 +71,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       }
     }
   };
-  useEffect(() => {
-    const token = localStorage.getItem("Bearer_token");
+
+  const getUser = async () => {
+    const token = await getCookie("Bearer_token");
     if (token) {
       try {
         const decoded = jwtDecode(token.split(" ")[1]);
@@ -78,22 +81,26 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         checkExpires((decoded as IUser).id);
       } catch (err) {
         console.error("Invalid token");
-        localStorage.removeItem("Bearer_token");
+        deleteCookie("Bearer_token");
       }
     } else {
       setUser({
-        id: '',
-        username: '',
-        first_name: '',
-        last_name: '',
-        email: '',
+        id: "",
+        username: "",
+        first_name: "",
+        last_name: "",
+        email: "",
         status: 0,
-        created_at: '',
-        updated_at: '',
+        created_at: "",
+        updated_at: "",
       });
       setIsExpired(null);
       setExpiredDate(new Date());
     }
+  };
+  useEffect(() => {
+    getUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

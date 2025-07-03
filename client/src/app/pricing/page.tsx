@@ -179,120 +179,122 @@ export default function PricingPage() {
                 </Link>
               </div>
             )}
-            <div className="bg-[#F3F3F3] p-6">
-              {clientToken && isAuthenticated && (
-                <div className="mb-4">
-                  <BraintreeDropIn
-                    clientToken={clientToken}
-                    setInstance={setInstance}
-                    instance={instance}
-                  />
-                </div>
-              )}
-              {isAuthenticated && (
-                <>
-                  <div className="flex items-center mb-3">
-                    <div className="rounded-lg px-2 py-4 bg-white mr-4">
-                      <img
-                        src="/images/rp-logo.png"
-                        alt="rp_logo"
-                        className="h-[25px]"
-                      />
-                    </div>
-                    <div className="mr-auto">
-                      <div className="text-[14px] leading-[14px]">
-                        Rotopass Bundle
-                      </div>
-                      <div className="text-[12px] leading-[14px] text-[#6c757d]">
-                        12 Month Access
-                      </div>
-                    </div>
-                    <div>$99.99</div>
+            {isAuthenticated && (
+              <div className="bg-[#F3F3F3] p-6">
+                {clientToken && isAuthenticated && (
+                  <div className="mb-4">
+                    <BraintreeDropIn
+                      clientToken={clientToken}
+                      setInstance={setInstance}
+                      instance={instance}
+                    />
                   </div>
-                  <hr className="my-4 border border-black/10" />
-                  <div className="mb-3">
-                    <div className="mb-2 items-center flex">
-                      <div className="text-[14px] mr-auto">Subtotal</div>
-                      <div className="text-[14px]">$99.99</div>
+                )}
+                {isAuthenticated && (
+                  <>
+                    <div className="flex items-center mb-3">
+                      <div className="rounded-lg px-2 py-4 bg-white mr-4">
+                        <img
+                          src="/images/rp-logo.png"
+                          alt="rp_logo"
+                          className="h-[25px]"
+                        />
+                      </div>
+                      <div className="mr-auto">
+                        <div className="text-[14px] leading-[14px]">
+                          Rotopass Bundle
+                        </div>
+                        <div className="text-[12px] leading-[14px] text-[#6c757d]">
+                          12 Month Access
+                        </div>
+                      </div>
+                      <div>$99.99</div>
                     </div>
                     <hr className="my-4 border border-black/10" />
-                    <div className="mb-2 items-center flex">
-                      <div className="text-[16px] mr-auto font-medium">
-                        Total
+                    <div className="mb-3">
+                      <div className="mb-2 items-center flex">
+                        <div className="text-[14px] mr-auto">Subtotal</div>
+                        <div className="text-[14px]">$99.99</div>
                       </div>
+                      <hr className="my-4 border border-black/10" />
+                      <div className="mb-2 items-center flex">
+                        <div className="text-[16px] mr-auto font-medium">
+                          Total
+                        </div>
+                        <div>
+                          <div className="text-[12px] text-[#6c757d] inline-block mr-1">
+                            USD
+                          </div>
+                          <div className="text-[24px] font-medium inline-block">
+                            $99.99
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mb-3">
                       <div>
-                        <div className="text-[12px] text-[#6c757d] inline-block mr-1">
-                          USD
-                        </div>
-                        <div className="text-[24px] font-medium inline-block">
-                          $99.99
-                        </div>
+                        <input
+                          type="checkbox"
+                          name="terms"
+                          id="terms-cbx"
+                          className="mr-1.5"
+                          required
+                        />
+                        <label
+                          className="text-[#ff0000] mb-2"
+                          htmlFor="terms-cbx"
+                        >
+                          By checking this box, you indicate that you understand
+                          the following Terms:
+                        </label>
+                      </div>
+                      <div className="text-[12px]">
+                        <p>
+                          <span className="font-bold">ONE:</span> You understand
+                          and agree to our NO REFUND POLICY. The information
+                          within these sites is very valuable and provides a
+                          significant edge for fantasy sports with a very
+                          specific shelf life. Based on this fact and per the
+                          policies of some of our partner sites, we have a NO
+                          REFUND POLICY! Thanks for understanding.
+                        </p>
+                        <p>
+                          <span className="font-bold">TWO:</span> You agree to
+                          the RotoPass <a href="/terms">Terms of Use</a> and
+                          have read and understand the RotoPass{" "}
+                          <a href="/privacy">Privacy Policy</a>. Your submission
+                          of this form will constitute your consent to the
+                          collection and use of this information by RotoPass.
+                          You also agree to receive required administrative
+                          notices about your account electronically.
+                        </p>
+                        <p>
+                          <span className="font-bold">THREE:</span> You
+                          acknowledge that RotoPass is a site that features
+                          advice for season long fantasy football and that for
+                          many sites DFS advice and tools are an extra cost. You
+                          also have checked out the front page to know the
+                          current roster of sites included in RotoPass as there
+                          has been some change.
+                        </p>
+                        <p>
+                          <span className="font-bold">FOUR:</span> You
+                          acknowledge that by signing up for RotoPass your are
+                          opting in to receive the Fantasy Life Newsletter
+                        </p>
                       </div>
                     </div>
-                  </div>
-                  <div className="mb-3">
-                    <div>
-                      <input
-                        type="checkbox"
-                        name="terms"
-                        id="terms-cbx"
-                        className="mr-1.5"
-                        required
-                      />
-                      <label
-                        className="text-[#ff0000] mb-2"
-                        htmlFor="terms-cbx"
-                      >
-                        By checking this box, you indicate that you understand
-                        the following Terms:
-                      </label>
-                    </div>
-                    <div className="text-[12px]">
-                      <p>
-                        <span className="font-bold">ONE:</span> You understand
-                        and agree to our NO REFUND POLICY. The information
-                        within these sites is very valuable and provides a
-                        significant edge for fantasy sports with a very specific
-                        shelf life. Based on this fact and per the policies of
-                        some of our partner sites, we have a NO REFUND POLICY!
-                        Thanks for understanding.
-                      </p>
-                      <p>
-                        <span className="font-bold">TWO:</span> You agree to the
-                        RotoPass <a href="/terms">Terms of Use</a> and have read
-                        and understand the RotoPass{" "}
-                        <a href="/privacy">Privacy Policy</a>. Your submission
-                        of this form will constitute your consent to the
-                        collection and use of this information by RotoPass. You
-                        also agree to receive required administrative notices
-                        about your account electronically.
-                      </p>
-                      <p>
-                        <span className="font-bold">THREE:</span> You
-                        acknowledge that RotoPass is a site that features advice
-                        for season long fantasy football and that for many sites
-                        DFS advice and tools are an extra cost. You also have
-                        checked out the front page to know the current roster of
-                        sites included in RotoPass as there has been some
-                        change.
-                      </p>
-                      <p>
-                        <span className="font-bold">FOUR:</span> You acknowledge
-                        that by signing up for RotoPass your are opting in to
-                        receive the Fantasy Life Newsletter
-                      </p>
-                    </div>
-                  </div>
-                  <Button
-                    className="bg-[#008cc2] hover:bg-[#0083b5] text-white"
-                    text="Pay Now"
-                    isFullWidth
-                    disabled={!isAuthenticated || !clientToken}
-                    onClick={handlePayment}
-                  />
-                </>
-              )}
-            </div>
+                    <Button
+                      className="bg-[#008cc2] hover:bg-[#0083b5] text-white"
+                      text="Pay Now"
+                      isFullWidth
+                      disabled={!isAuthenticated || !clientToken}
+                      onClick={handlePayment}
+                    />
+                  </>
+                )}
+              </div>
+            )}
           </section>
         </div>
       </div>
