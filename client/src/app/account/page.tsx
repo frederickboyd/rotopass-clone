@@ -39,7 +39,7 @@ export default function AccountPage() {
                   {user.first_name}'s dashboard
                 </div>
               </div>
-              {isExpired ? (
+              {isExpired !== false ? (
                 <div className="max-w-full p-6 bg-white">
                   <h2>
                     <a href="/pricing">Join Now</a> to get access to all our
