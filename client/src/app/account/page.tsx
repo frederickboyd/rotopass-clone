@@ -1,4 +1,5 @@
 "use client";
+import Button from "@/components/common/Button";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -8,11 +9,16 @@ export default function AccountPage() {
   const router = useRouter();
   const path = usePathname();
 
+  const formattedExpiredDate = expiredDate.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
   useEffect(() => {
     if (user.id === undefined) return;
-    if (!user.id && path === "/account") {
+    if (user.id === "" && path === "/account") {
       router.push("/login");
-    } else {
     }
   }, [user.id, path]);
 
@@ -45,7 +51,145 @@ export default function AccountPage() {
                   </p>
                 </div>
               ) : (
-                <div>{expiredDate.toLocaleString()}</div>
+                <>
+                  <div className="bg-white p-4 mb-4">
+                    {`Your subscription is comped until ${formattedExpiredDate}. Please reach out to support if you have any questions.`}
+                  </div>
+                  <div className="flex flex-wrap">
+                    <div className="w-full md:w-1/2 lg:w-1/3 mb-4 px-2">
+                      <div className="bg-white flex flex-col h-[100%]">
+                        <div className="p-4 mb-4 text-center">
+                          <img
+                            src="/images/slide1.png"
+                            alt="peacock.png"
+                            className="max-w-full max-h-full"
+                          />
+                        </div>
+                        <div className="text-[#383838] p-4 px-6 my-auto leading-[20px] tracking-[.5px]">
+                          Six months of free access to the most live sports of
+                          any streaming service including NBC's Sunday Night
+                          Football, this years exclusive Friday NFL Brazil game,
+                          Big Ten Saturday Night and much more.
+                        </div>
+                        <div className="p-4">
+                          <Button
+                            isFullWidth
+                            className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
+                            text="Get Code"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="w-full md:w-1/2 lg:w-1/3 mb-4 px-2">
+                      <div className="bg-white flex flex-col h-[100%]">
+                        <div className="p-4 mb-4 text-center">
+                          <img
+                            src="/images/slide2.png"
+                            alt="Footballguys"
+                            className="max-w-full max-h-full"
+                          />
+                        </div>
+                        <div className="text-[#383838] p-4 px-6 my-auto leading-[20px] tracking-[.5px]">
+                          Cheatsheets, rankings, projections, and so much more
+                        </div>
+                        <div className="p-4">
+                          <Button
+                            isFullWidth
+                            className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
+                            text="ACCESS"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="w-full md:w-1/2 lg:w-1/3 mb-4 px-2">
+                      <div className="bg-white flex flex-col h-[100%]">
+                        <div className="p-4 mb-4 text-center">
+                          <img
+                            src="/images/slide3.png"
+                            alt="Fantasylife"
+                            className="max-w-full max-h-full"
+                          />
+                        </div>
+                        <div className="text-[#383838] p-4 px-6 my-auto leading-[20px] tracking-[.5px]">
+                          Get one year of access to FantasyLife+ Tier 1 ($39.99
+                          value) for free. Contact support@fantasylife.com for a
+                          special discount code to upgrade to tier 2.
+                        </div>
+                        <div className="p-4">
+                          <Button
+                            isFullWidth
+                            className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
+                            text="ACCESS"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="w-full md:w-1/2 lg:w-1/3 mb-4 px-2">
+                      <div className="bg-white flex flex-col h-[100%]">
+                        <div className="p-4 mb-4 text-center">
+                          <img
+                            src="/images/slide4.png"
+                            alt="4for4"
+                            className="max-w-full max-h-full"
+                          />
+                        </div>
+                        <div className="text-[#383838] p-4 px-6 my-auto leading-[20px] tracking-[.5px]">
+                          Take me to the most accurate rankings since 2010
+                        </div>
+                        <div className="p-4">
+                          <Button
+                            isFullWidth
+                            className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
+                            text="Get Code"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="w-full md:w-1/2 lg:w-1/3 mb-4 px-2">
+                      <div className="bg-white flex flex-col h-[100%]">
+                        <div className="p-4 mb-4 text-center">
+                          <img
+                            src="/images/slide5.png"
+                            alt="Dynasty"
+                            className="max-w-full max-h-full"
+                          />
+                        </div>
+                        <div className="text-[#383838] p-4 px-6 my-auto leading-[20px] tracking-[.5px]">
+                          The most indepth dynasty coverage in the industry
+                        </div>
+                        <div className="p-4">
+                          <Button
+                            isFullWidth
+                            className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
+                            text="Get Code"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="w-full md:w-1/2 lg:w-1/3 mb-4 px-2">
+                      <div className="bg-white flex flex-col h-[100%]">
+                        <div className="p-4 mb-4 text-center">
+                          <img
+                            src="/images/slide1.png"
+                            alt="Rotoviz"
+                            className="max-w-full max-h-full"
+                          />
+                        </div>
+                        <div className="text-[#383838] p-4 px-6 my-auto leading-[20px] tracking-[.5px]">
+                          Over 33 tools and content from Shawn Siegle and the
+                          RotoViz team
+                        </div>
+                        <div className="p-4">
+                          <Button
+                            isFullWidth
+                            className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6]"
+                            text="Get Code"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </div>

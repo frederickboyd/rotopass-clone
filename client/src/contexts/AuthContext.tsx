@@ -42,9 +42,9 @@ const AuthContext = createContext<AuthContextType>({
   },
   isExpired: null,
   expiredDate: new Date(),
-  setUser: () => {},
-  setIsExpired: () => {},
-  setExpiredDate: () => {},
+  setUser: () => { },
+  setIsExpired: () => { },
+  setExpiredDate: () => { },
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
@@ -80,6 +80,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         console.error("Invalid token");
         localStorage.removeItem("Bearer_token");
       }
+    } else {
+      setUser({
+        id: '',
+        username: '',
+        first_name: '',
+        last_name: '',
+        email: '',
+        status: 0,
+        created_at: '',
+        updated_at: '',
+      });
+      setIsExpired(null);
+      setExpiredDate(new Date());
     }
   }, []);
 

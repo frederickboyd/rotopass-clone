@@ -14,10 +14,10 @@ const UpLayout = () => {
     const target = e.target as HTMLAnchorElement;
     if (target.pathname === "/logout") {
       e.preventDefault();
-      localStorage.removeItem("Bearer_token");
-      setShowDropdown(false);
       router.push("/");
+      setShowDropdown(false);
       setTimeout(() => {
+        localStorage.removeItem("Bearer_token");
         setUser({
           id: "",
           username: "",

@@ -17,7 +17,7 @@ const Button = ({
     <button
       className={`${
         isFullWidth ? "w-full" : ""
-      } inline-block text-white px-[22px] py-[18px] font-semibold font-arupala cursor-pointer !text-white cursor-pointer transition-colors duration-200 ease-in-out focus:outline-none ${className}`}
+      } inline-block text-white px-[22px] py-[18px] font-semibold font-arupala cursor-pointer text-white cursor-pointer transition-colors duration-200 ease-in-out focus:outline-none ${className}`}
       {...props}
     >
       {text}
