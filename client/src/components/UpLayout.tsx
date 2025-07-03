@@ -47,7 +47,7 @@ const UpLayout = () => {
           </Link>
           <div className="flex gap-1">
             <Link
-              href={"/login"}
+              href={"/account"}
               className="bg-[#d9d9d9] !text-[#212529] text-center px-[22px] py-[18px] mt-auto font-arupala font-semibold text-[16px] hover:bg-[#c6c6c6] transition-colors duration-300"
             >
               My Account

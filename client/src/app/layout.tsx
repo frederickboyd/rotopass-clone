@@ -126,7 +126,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${arupala.variable} ${dmSans.variable} antialiased`}>
+      <body className={`${arupala.variable} ${dmSans.variable}`}>
         <AuthProvider>
           <UpLayout />
           {children}

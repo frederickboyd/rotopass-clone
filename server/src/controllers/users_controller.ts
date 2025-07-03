@@ -56,19 +56,76 @@ const userController = {
 
       // Check password
       const isPasswordValid = bcrypt.compareSync(password, user.password);
-      console.log({isPasswordValid})
+      console.log({ isPasswordValid });
       if (!isPasswordValid) {
         res.status(400).json({ error: "Invalid email or password" });
         return;
       }
-
-      // Generate JWT token
       const token = jwt.sign(user, JWT_SECRET);
-      res.status(200).json({ error: null, token });
+      const latestPurchase = await prisma.purchase.findFirst({
+        where: {
+          owner_id: user.id,
+        },
+        orderBy: {
+          created_on: "desc",
+        },
+      });
+
+      if (!latestPurchase) {
+        res.json({ expired: null, error: null, token });
+        return;
+      }
+
+      const purchaseDate = new Date(latestPurchase.created_on);
+      const oneYearLater = new Date(purchaseDate);
+      oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
+
+      const isExpired = new Date() > oneYearLater;
+      // Generate JWT token
+      res
+        .status(200)  
+        .json({
+          expired: isExpired,
+          error: null,
+          token,
+          expiredDate: oneYearLater,
+        });
     } catch (error) {
       console.error("Error logging in user:", error);
       res.status(500).json({ error: "Internal server error" });
     }
+  },
+  checkExpiresController: async (
+    req: Request,
+    res: Response
+  ): Promise<void> => {
+    const { id } = req.body;
+    if (!id) {
+      res.status(400).json({ error: "No userID requested" });
+      return;
+    }
+
+    const latestPurchase = await prisma.purchase.findFirst({
+      where: {
+        owner_id: id,
+      },
+      orderBy: {
+        created_on: "desc",
+      },
+    });
+
+    if (!latestPurchase) {
+      res.json({ expired: null });
+      return;
+    }
+
+    const purchaseDate = new Date(latestPurchase.created_on);
+    const oneYearLater = new Date(purchaseDate);
+    oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
+
+    const isExpired = new Date() > oneYearLater;
+
+    res.json({ expired: isExpired, expiredDate: oneYearLater });
   },
 };
 

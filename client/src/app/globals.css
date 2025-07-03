@@ -114,3 +114,15 @@ a {
     }
   }
 }
+
+iframe {
+  width: 300px !important;
+}
+
+label {
+  display: inline-block !important;
+}
+
+.braintree-form__notice-of-collection {
+  display: none !important;
+}

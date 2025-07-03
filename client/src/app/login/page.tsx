@@ -12,7 +12,7 @@ type IType = "login" | "register" | "forgotPassword";
 
 export default function Login() {
   const router = useRouter();
-  const { setUser } = useAuth();
+  const { setUser, setIsExpired, setExpiredDate } = useAuth();
   const [type, setType] = useState<IType>("login");
   const [error, setError] = useState<string | null>(null);
   const allStates = new UsaStates().states;
@@ -65,14 +65,21 @@ export default function Login() {
 
     try {
       api
-        .post("/register", registrationData)
+        .post("users/register", registrationData)
         .then((response) => {
           if (response.data.error) {
             setError(response.data.error);
           } else {
             setError(null);
-            localStorage.setItem("Bearer_token", response.data.token);
+            localStorage.setItem(
+              "Bearer_token",
+              `Bearer ${response.data.token}`
+            );
             setUser(jwtDecode(response.data.token));
+            setIsExpired(response.data.expired);
+            if (response.data.expiredDate) {
+              setExpiredDate(new Date(response.data.expiredDate));
+            }
             router.push("/account");
           }
         })
@@ -96,13 +103,13 @@ export default function Login() {
     ).value;
 
     api
-      .post("/login", { email, password })
+      .post("/users/login", { email, password })
       .then((response) => {
         if (response.data.error) {
           setError(response.data.error);
         } else {
           setError(null);
-          localStorage.setItem("Bearer_token", response.data.token);
+          localStorage.setItem("Bearer_token", `Bearer ${response.data.token}`);
           setUser(jwtDecode(response.data.token));
           router.push("/account");
         }

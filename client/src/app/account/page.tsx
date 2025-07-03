@@ -4,15 +4,17 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function AccountPage() {
-  const { user } = useAuth();
+  const { user, isExpired, expiredDate } = useAuth();
   const router = useRouter();
   const path = usePathname();
 
   useEffect(() => {
+    if (user.id === undefined) return;
     if (!user.id && path === "/account") {
       router.push("/login");
+    } else {
     }
-  }, [user.id, router]);
+  }, [user.id, path]);
 
   return (
     <div className="bg-[url('/images/gridbg.png')] bg-cover bg-no-repeat bg-blend-luminosity bg-gray-800">
@@ -31,7 +33,7 @@ export default function AccountPage() {
                   {user.first_name}'s dashboard
                 </div>
               </div>
-              <div className="flex items-stretch">
+              {isExpired ? (
                 <div className="max-w-full p-6 bg-white">
                   <h2>
                     <a href="/pricing">Join Now</a> to get access to all our
@@ -42,7 +44,9 @@ export default function AccountPage() {
                     <a href="mailto:support@rotopass.com">contact support</a>
                   </p>
                 </div>
-              </div>
+              ) : (
+                <div>{expiredDate.toLocaleString()}</div>
+              )}
             </div>
           </div>
         </div>

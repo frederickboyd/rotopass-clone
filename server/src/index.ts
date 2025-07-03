@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
-import apiRoute from "./routes/api_route";
+import usersRoute from "./routes/users";
 import cors from "cors";
+import paymentsRoute from "./routes/payments";
 
 const app = express();
 const PORT = 5000;
@@ -12,7 +13,8 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Hello, TypeScript + Express!");
 });
 
-app.use("/api", apiRoute);
+app.use("/api/users", usersRoute);
+app.use("/api/payments", paymentsRoute);
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
