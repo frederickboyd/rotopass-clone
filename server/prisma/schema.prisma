@@ -13,6 +13,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum FeatureStatus {
+  publish
+  draft
+}
+
 model User {
   id          String        @id @default(uuid())
   username    String?
@@ -54,5 +59,65 @@ model Purchase {
   billable_id   String?
   created_on    DateTime  @default(now())
   updated_on    DateTime  @updatedAt
-  deleted_on    DateTime? 
+  deleted_on    DateTime?
+}
+
+model FeatureCategory {
+  id              BigInt    @id @default(autoincrement())
+  title           String
+  sequence        BigInt
+  sport           String
+  slug            String
+  searchable      Int       @default(1)
+  titleTag        String?
+  metaDescription String?
+  h1Tag           String?
+  seoKeywords     String?
+  product         String?
+  seasonal        String    @default("all")
+  seoImage        String?
+  site            String    @default("all")
+  parent_id       Int       @default(0)
+  full_url        String?
+  Feature         Feature[]
+}
+
+model Feature {
+  id                     BigInt          @id @default(autoincrement())
+  timestamp              BigInt
+  class                  String          @default("article")
+  sport                  String?
+  title                  String
+  smallTitle             String?
+  seoURL                 String?
+  tags                   String?
+  period                 String?
+  timeframe              String?
+  status                 FeatureStatus   @default(publish)
+  description            String?
+  cover_image            String?
+  cover_alt_text         String?
+  security               Int             @default(-1)
+  style                  String?
+  searchable             Int             @default(1)
+  full_seo_url           String
+  user_id                BigInt          @default(-2)
+  category_id            BigInt
+  category               FeatureCategory @relation(fields: [category_id], references: [id])
+  created_at             DateTime?       @default(now())
+  updated_at             DateTime?       @default(now())
+  deleted_at             DateTime?
+  body                   String?         @db.LongText
+  thumb_width            String?
+  thumb_height           String?
+  thumbnail              String?
+  video_link             String?
+  video_original         String?
+  video_eplayer_id       String?
+  video_eplayer_video_id String?
+  video_still            String?
+  video_length           String?
+  video_large_player     String?
+  video_small_player     String?
+  video_type             String?
 }

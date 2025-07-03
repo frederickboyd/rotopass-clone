@@ -3,8 +3,6 @@ import paymentsController from "../controllers/payments_controller";
 import authMiddleware from "../lib/authMiddleware";
 const paymentsRoute = express.Router();
 
-export default paymentsRoute;
-
 paymentsRoute.get(
   "/client-token",
   authMiddleware,
@@ -16,3 +14,5 @@ paymentsRoute.post(
   authMiddleware,
   paymentsController.checkoutController
 );
+
+export default paymentsRoute;

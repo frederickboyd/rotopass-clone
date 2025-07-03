@@ -1,8 +1,8 @@
 import express, { Request, Response } from "express";
-import usersRoute from "./routes/users";
 import cors from "cors";
+import usersRoute from "./routes/users";
 import paymentsRoute from "./routes/payments";
-
+import blogsRoute from "./routes/blogs";
 const app = express();
 const PORT = 5000;
 
@@ -15,6 +15,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/users", usersRoute);
 app.use("/api/payments", paymentsRoute);
+app.use("/api/blogs", blogsRoute);
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
