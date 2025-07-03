@@ -9,7 +9,6 @@ const userController = {
     req: Request,
     res: Response
   ): Promise<void> => {
-    console.log("Registering user with data:", req.body);
     const { firstName, lastName, email, password, state } = req.body;
 
     try {
@@ -56,7 +55,6 @@ const userController = {
 
       // Check password
       const isPasswordValid = bcrypt.compareSync(password, user.password);
-      console.log({ isPasswordValid });
       if (!isPasswordValid) {
         res.status(400).json({ error: "Invalid email or password" });
         return;
