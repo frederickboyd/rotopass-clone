@@ -18,7 +18,7 @@ const DownLayout = () => {
         <div className="flex-1 max-w-full">
           <div className="flex flex-wrap mx-0 justify-center">
             <div className="w-full md:w-1/6 mb-4 md:mb-0 text-center md:text-left px-2">
-              <h2 className="mb-3">
+              <h2 className="!mb-3">
                 <Link
                   href="/pricing"
                   className="!text-white text-shadow text-[20px] font-bold font-arupala"
@@ -112,7 +112,7 @@ const DownLayout = () => {
             </div>
 
             <div className="w-full md:w-1/6 mb-4 md:mb-0 text-center md:text-left px-2">
-              <h2 className="mb-3">
+              <h2 className="!mb-3">
                 <Link
                   href="/articles/nfl-content/16-reasons-to-buy"
                   className="!text-white text-shadow text-[20px] font-bold font-arupala"
@@ -147,7 +147,7 @@ const DownLayout = () => {
             </div>
 
             <div className="w-full md:w-1/6 mb-4 md:mb-0 text-center md:text-left px-2">
-              <h2 className="mb-3">
+              <h2 className="!mb-3">
                 <Link
                   href="/pricing"
                   className="!text-white text-shadow text-[20px] font-bold font-arupala"

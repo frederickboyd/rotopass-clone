@@ -1,6 +1,6 @@
 export default function PrivacyPage() {
   return (
-    <div className="container py-6 mx-auto">
+    <div className="rp-container !py-6 mx-auto">
       <div className="pt-4 mb-6 justify-center flex flex-wrap mx-0">
         <div className="w-full md:w-5/6 lg:w-2/3">
           <section>

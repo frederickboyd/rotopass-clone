@@ -66,6 +66,11 @@ p {
   margin-bottom: 1rem;
 }
 
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 a {
   color: #e9522a;
   text-decoration: none;
@@ -127,35 +132,22 @@ label {
   display: none !important;
 }
 
-.container {
+.rp-container {
   margin-left: auto;
   margin-right: auto;
   padding: 0 7.5px;
   width: 100%;
 }
 
-@media (min-width: 40rem) {
-  .container {
-    max-width: 40rem;
+@media screen and (min-width: 1440px) {
+  .rp-container {
+    max-width: 1436px;
   }
 }
-@media (min-width: 48rem) {
-  .container {
-    max-width: 48rem;
+
+@media screen and (min-width: 1280px) {
+  .rp-container {
+    max-width: 1276px;
   }
 }
-@media (min-width: 64rem) {
-  .container {
-    max-width: 64rem;
-  }
-}
-@media (min-width: 80rem) {
-  .container {
-    max-width: 80rem;
-  }
-}
-@media (min-width: 96rem) {
-  .container {
-    max-width: 96rem;
-  }
-}
+

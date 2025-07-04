@@ -34,7 +34,7 @@ const UpLayout = () => {
 
   return (
     <div className="relative bg-white">
-      <div className="mx-[24px] pt-6 pb-2 lg:mx-[120px] lg:py-6">
+      <div className="mx-[24px] mt-6 mb-2 lg:mx-[120px] lg:mb-6">
         <div className="flex justify-between items-center lg:items-end">
           <Link href="/">
             <img
@@ -180,7 +180,7 @@ const UpLayout = () => {
           <div className="w-full lg:w-7/12 bg-white p-3">
             <div className="flex mx-0">
               <div className="w-full md:flex-1 mb-4 md:mb-0 px-[7.5px]">
-                <h2 className="mb-3">
+                <h2 className="!mb-3">
                   <Link
                     href={"/about"}
                     className="text-[20px] font-bold leading-[36px] font-arupala !text-black"
@@ -254,7 +254,7 @@ const UpLayout = () => {
                 </div>
               </div>
               <div className="w-full md:flex-1 mb-4 md:mb-0 px-[7.5px]">
-                <h2 className="mb-3">
+                <h2 className="!mb-3">
                   <Link
                     href={"#"}
                     className="text-[20px] font-bold leading-[36px] font-arupala !text-black"

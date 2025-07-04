@@ -64,7 +64,7 @@ export default function PricingPage() {
     if (isAuthenticated) fetchClientToken();
   }, [isAuthenticated]);
   return (
-    <div className="container py-6 mx-auto">
+    <div className="rp-container !py-6 mx-auto">
       <div className="pt-6 mb-6 justify-center flex">
         <div className="w-full md:w-5/6 lg:w-2/3">
           <section className="mb-6">
@@ -82,7 +82,7 @@ export default function PricingPage() {
                 alt="rp-logo"
                 className="text-center mx-auto mb-4 block"
               />
-              <h3 className="text-center font-bold leading-[1.2] mb-2 not-italic">
+              <h3 className="text-center font-bold leading-[1.2] !mb-2 not-italic">
                 The Rotopass Bundle
               </h3>
               <div className="flex justify-center mb-4">
@@ -157,7 +157,7 @@ export default function PricingPage() {
                   />
                 </div>
               </div>
-              <h3 className="!text-[40px] text-center font-bold leading-[50px] -tracking-[0.4px] mb-4">
+              <h3 className="!text-[40px] text-center font-bold leading-[50px] -tracking-[0.4px] !mb-4">
                 Bundle Worth over $380
               </h3>
               <div className="text-[20px] text-center font-bold leading-[50px] -tracking-[0.2px] mb-4 font-arupala">
@@ -172,7 +172,7 @@ export default function PricingPage() {
             </div>
           </section>
           <section className="mb-6">
-            <h5 className="text-center text-[20px] font-bold mb-4">
+            <h5 className="text-center text-[20px] font-bold !mb-4">
               Get your 12 MONTHS of ACCESS to the Rotopass Bundle
             </h5>
             <div className="text-center mb-4">
@@ -222,13 +222,13 @@ export default function PricingPage() {
                         </div>
                         <div>$99.99</div>
                       </div>
-                      <hr className="my-4 border border-black/10" />
+                      <hr className="border border-black/10" />
                       <div className="mb-3">
                         <div className="mb-2 items-center flex">
                           <div className="text-[14px] mr-auto">Subtotal</div>
                           <div className="text-[14px]">$99.99</div>
                         </div>
-                        <hr className="my-4 border border-black/10" />
+                        <hr className="border border-black/10" />
                         <div className="mb-2 items-center flex">
                           <div className="text-[16px] mr-auto font-medium">
                             Total

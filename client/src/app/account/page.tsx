@@ -13,8 +13,8 @@ export default function AccountPage() {
   });
 
   return (
-    <div className="bg-[url('/images/gridbg.png')] bg-cover bg-no-repeat bg-blend-luminosity bg-gray-800">
-      <div className="container py-6 mx-auto">
+    <div className="bg-[url('/images/gridbg.png')] bg-cover bg-no-repeat bg-blend-luminosity bg-gray-100">
+      <div className="rp-container !py-6 mx-auto">
         <div className="pt-4 mb-6 justify-center flex flex-wrap mx-0">
           <div className="w-full md:w-5/6 lg:w-2/3">
             <div

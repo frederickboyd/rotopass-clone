@@ -5,17 +5,18 @@ import Button from "@/components/common/Button";
 import { UsaStates } from "usa-states";
 import Link from "next/link";
 import api from "@/lib/api";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { jwtDecode } from "jwt-decode";
 import { setCookie } from "@/lib/cookie";
+import { useMediaBreakpoints } from "@/hooks/useMediaBreakpoints";
 
 type IType = "login" | "register" | "forgotPassword";
 
 export default function Login() {
   const router = useRouter();
-  const pathname = usePathname();
-  const { user, setUser, setIsExpired, setExpiredDate } = useAuth();
+  const { matches, breakpoint } = useMediaBreakpoints();
+  const { setUser, setIsExpired, setExpiredDate } = useAuth();
   const [type, setType] = useState<IType>("login");
   const [error, setError] = useState<string | null>(null);
   const allStates = new UsaStates().states;
@@ -125,8 +126,8 @@ export default function Login() {
 
   return (
     <div>
-      <div className="bg-[url('/images/gridbg.png')] bg-cover bg-no-repeat bg-blend-luminosity bg-gray-800">
-        <div className="container py-4 mx-auto">
+      <div className="bg-[url('/images/gridbg.png')] bg-cover bg-no-repeat bg-blend-luminosity bg-gray-100">
+        <div className="rp-container !py-6 mx-auto">
           {/*Login Dialog*/}
           {type === "login" && (
             <div
@@ -136,7 +137,7 @@ export default function Login() {
                   "linear-gradient(134deg, rgba(244, 244, 244, 0.40) 0%, rgba(244, 244, 244, 0.20) 100%)",
               }}
             >
-              <h2 className="font-bold !text-[25px] uppercase mb-6">
+              <h2 className="font-bold !text-[25px] uppercase !mb-6">
                 Login to Your Account
               </h2>
               {error && (
@@ -144,7 +145,7 @@ export default function Login() {
                   {error}
                 </div>
               )}
-              <form onSubmit={handleLoginSubmit} className="pb-3">
+              <form onSubmit={handleLoginSubmit} className="pb-4">
                 <div className="mb-4">
                   <input
                     type="email"
@@ -209,7 +210,7 @@ export default function Login() {
                   "linear-gradient(134deg, rgba(244, 244, 244, 0.40) 0%, rgba(244, 244, 244, 0.20) 100%)",
               }}
             >
-              <h2 className="font-bold !text-[25px] uppercase mb-6">
+              <h2 className="font-bold !text-[25px] uppercase !mb-6">
                 Create your account!
               </h2>
               <p className="flex items-center text-[12px] text-[#767777]">
@@ -347,7 +348,7 @@ export default function Login() {
                   "linear-gradient(134deg, rgba(244, 244, 244, 0.40) 0%, rgba(244, 244, 244, 0.20) 100%)",
               }}
             >
-              <h2 className="font-bold !text-[25px] uppercase mb-6">
+              <h2 className="font-bold !text-[25px] uppercase !mb-6">
                 Forgot your password?
               </h2>
               <div className="p-4">
@@ -402,8 +403,8 @@ export default function Login() {
           Get <span className="italic">Free</span> updates in your inbox
         </div>
         <div className="flex">
-          <div className="w-full md:w-1/2 mx-auto">
-            <form className="flex justify-center items-center">
+          <div className="w-full md:w-1/2 mx-auto px-2">
+            <form className="flex justify-center items-center flex-wrap">
               <input
                 type="email"
                 required
@@ -414,7 +415,7 @@ export default function Login() {
                 type="submit"
                 text="Sign Up!"
                 className="bg-[#008cc2] hover:bg-[#0083b5] text-white"
-                isFullWidth={false}
+                isFullWidth={matches.md ? false : true}
               />
             </form>
           </div>

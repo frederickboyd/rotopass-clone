@@ -39,11 +39,11 @@ export default function BlogPage() {
   }, [titleSlug, subSlug]);
 
   return (
-    <div className="container mx-auto py-6">
+    <div className="rp-container mx-auto py-6">
       <div className="pt-4 mb-6 justify-center flex flex-wrap mx-0">
         <div className="w-full md:w-5/6 lg:w-2/3">
           <section className="text-center mb-6">
-            <h1 className="mb-4">{blogTitle}</h1>
+            <h1 className="!mb-4">{blogTitle}</h1>
             <div className="mb-4">
               <span className="mx-2">{publishedDate}</span>
               <span className="mx-2 font-bold">{slugTitle}</span>

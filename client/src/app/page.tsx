@@ -6,14 +6,14 @@ import { FaStar } from "react-icons/fa";
 export default function Home() {
   return (
     <div>
-      <div className="container py-4 mx-auto">
-        <div className="pt-4 flex flex-wrap mx-20">
+      <div className="rp-container !py-6 mx-auto">
+        <div className="pt-4 flex flex-wrap">
           <div className="flex-1">
             <section className="mb-6">
-              <h1 className="text-center text-shadow !text-[110px] tracking-[1.1px] uppercase text-[#1d1e1f] mb-4">
+              <h1 className="text-center text-shadow !text-[50px] lg:!text-[110px] tracking-[1.1px] uppercase text-[#1d1e1f] !mb-6">
                 Win Your League
               </h1>
-              <h2 className="text-center text-shadow !text-[24px] leading-[97%] tracking-[3px] lowercase text-[#1d1e1f] mb-4">
+              <h2 className="text-center text-shadow !text-[16px] lg:!text-[24px] leading-[97%] tracking-[3px] lowercase text-[#1d1e1f] !mb-6">
                 <div className="mb-4 md:mb-2">
                   <span className="italic font-normal">with </span>
                   <span className="uppercase font-medium text-[#e9522a]">
@@ -26,20 +26,20 @@ export default function Home() {
                 </div>
               </h2>
             </section>
-            <div className="text-center block lg:hidden">
+            <div className="flex justify-center lg:hidden">
               <Image
                 src="/images/MB.png"
                 alt="mb"
                 width={238}
                 height={478}
-                className="object-contain"
+                className="object-contain -scale-x-100"
               />
             </div>
             <section className="my-4">
-              <div className="flex mx-0 justify-center">
+              <div className="flex flex-wrap mx-0 justify-center">
                 <div className="w-full lg:w-1/2 pb-3">
                   <div className="mx-auto">
-                    <div className="text-[40px] leading-[59px] -tracking-[0.4px] font-arupala mb-4 text-black">
+                    <div className="text-[20px] lg:text-[40px] leading-[34px] lg:leading-[59px] -tracking-[0.4px] font-arupala mb-4 text-black">
                       <span className="text-[#00a8e8] font-bold">
                         Watch Live Sports,
                       </span>{" "}
@@ -90,7 +90,7 @@ export default function Home() {
                         Get the Rotopass bundle
                       </Link>
                     </div>
-                    <div className="text-[30px] font-bold leading-[50px] -tracking-[0.3px] font-arupala text-black flex items-end">
+                    <div className="text-[16px] lg:text-[30px] font-bold leading-[50px] -tracking-[0.3px] font-arupala text-black flex justify-center lg:justify-start items-end">
                       <div>For only $0.27 per day!</div>
                       <div className="pb-4 hidden lg:inline">
                         <Image
@@ -197,7 +197,7 @@ export default function Home() {
                   <div className="mt-auto">
                     <Link
                       href={"/pricing"}
-                      className="inline-block px-[22px] py-[18px] font-arupala text-center cursor-pointer text-[#e9522a] hover:bg-[#e9522a] hover:!text-white border border-1 border-[#e9522a] transition-colors duration-300"
+                      className="block lg:inline-block px-[22px] py-[18px] font-arupala text-center cursor-pointer text-[#e9522a] hover:bg-[#e9522a] hover:!text-white border border-1 border-[#e9522a] transition-colors duration-300"
                     >
                       Learn More
                     </Link>
@@ -207,12 +207,12 @@ export default function Home() {
             </section>
             <section className="mb-4">
               <div className="flex flex-wrap justify-center mb-4">
-                <h4 className="w-full lg:w-2/3 text-left lg:text-center !text-[50px] font-bold text-shadow">
+                <h4 className="w-full lg:w-2/3 text-left lg:text-center !text-[40px] lg:!text-[50px] font-bold text-shadow">
                   Arm yourself with the tools you need to succeed
                 </h4>
               </div>
               <div className="flex flex-wrap justify-center mb-4">
-                <h4 className="w-full lg:w-2/3 text-left lg:text-center !text-[30px] font-bold leading-[50px] text-[#e9522a]">
+                <h4 className="w-full lg:w-2/3 text-left lg:text-center !text-[26px] lg:!text-[30px] font-bold leading-[37px] lg:leading-[50px] text-[#e9522a]">
                   RANKINGS, PROJECTIONS, DRAFT HELP & MORE...
                 </h4>
               </div>

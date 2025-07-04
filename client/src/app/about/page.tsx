@@ -4,13 +4,13 @@ import Link from "next/link";
 export default function AboutPage() {
   return (
     <div>
-      <div className="container py-6 mx-auto">
+      <div className="rp-container !py-6 mx-auto">
         <div className="pt-4 mb-6 justify-center flex flex-wrap mx-0">
           <div className="w-full md:w-5/6 lg:w-2/3">
-            <h1 className="mb-6 text-center md:text-left !text-[60px] text-shadow">
+            <h1 className="!mb-6 text-center md:text-left !text-[60px] text-shadow">
               ABOUT
             </h1>
-            <h5 className="mb-2 block md:hidden text-center text-[16px] font-bold leading-[1.2]">
+            <h5 className="!mb-2 block md:hidden text-center text-[16px] font-bold leading-[1.2]">
               Rotopass & Matthew Berry
             </h5>
             <div className="flex flex-wrap mx-0 mb-6">
@@ -25,10 +25,10 @@ export default function AboutPage() {
                 />
               </div>
               <div className="px-[7.5px] flex-1">
-                <h2 className="hidden md:block font-bold mb-2">
+                <h2 className="hidden md:block font-bold !mb-2">
                   ROTOPASS BY MATTHEW BERRY
                 </h2>
-                <p className="mb-4">
+                <p className="!mb-4">
                   When you buy a subscription to{" "}
                   <Link href="http://rotopass.com/" className="text-[#e9522a]">
                     rotopass.com
@@ -38,7 +38,7 @@ export default function AboutPage() {
                   Super easy to use - just log into RotoPass once and then every
                   site is just <strong>ONE CLICK AWAY</strong>.
                 </p>
-                <p className="mb-4">
+                <p className="!mb-4">
                   These sites have combined to produce over{" "}
                   <strong>
                     70 expert league titles, over 100 different writing awards
@@ -53,7 +53,7 @@ export default function AboutPage() {
                   football, if you need it, they have it. Along with 100 other
                   things you need but didn't realize until now.
                 </p>
-                <p className="mb-4">
+                <p className="!mb-4">
                   Not every site does everything equally well, so why you should
                   you have to choose? Now you don't have to. Created by ESPN's
                   Matthew Berry, RotoPass is an elite product for the elite
@@ -63,7 +63,7 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <h4 className="mb-6">
+            <h4 className="!mb-6">
               LEARN MORE ABOUT OUR OTHER BUNDLE PARTNERS
             </h4>
             <div>
