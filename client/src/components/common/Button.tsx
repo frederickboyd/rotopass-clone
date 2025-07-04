@@ -2,7 +2,7 @@ import React from "react";
 
 interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isFullWidth?: boolean;
-  text?: string;
+  text: React.ReactNode; // Update this to accept JSX
   className?: string;
   props?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }

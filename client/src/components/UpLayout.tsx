@@ -29,6 +29,11 @@ const UpLayout = () => {
       });
       setIsExpired(null);
       setExpiredDate(new Date());
+    } 
+
+    // Click on "Login"button
+    else { 
+      window.location.href = "/login";
     }
   };
 
@@ -162,7 +167,7 @@ const UpLayout = () => {
                   </Link>
                   <div className="text-[14px]">
                     <span className="text-[#6c757d]">need help, </span>
-                    <span className="text-[#e9522a]">click here</span>
+                    <span className="text-[#e9522a] cursor-pointer">click here</span>
                   </div>
                 </div>
               </div>

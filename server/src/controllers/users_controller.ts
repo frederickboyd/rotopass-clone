@@ -49,14 +49,14 @@ const userController = {
       });
 
       if (!user) {
-        res.status(400).json({ error: "Invalid email or password" });
+        res.status(400).json({ error: "Incorrect Username or Password" });
         return;
       }
 
       // Check password
       const isPasswordValid = bcrypt.compareSync(password, user.password);
       if (!isPasswordValid) {
-        res.status(400).json({ error: "Invalid email or password" });
+        res.status(400).json({ error: "Incorrect Username or Password" });
         return;
       }
       const token = jwt.sign(user, JWT_SECRET);
