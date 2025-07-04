@@ -9,6 +9,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { jwtDecode } from "jwt-decode";
 import { setCookie } from "@/lib/cookie";
+import { DotLoader } from "react-spinners";
 
 type IType = "login" | "register" | "forgotPassword";
 
@@ -23,6 +24,7 @@ export default function Login() {
     value: state.abbreviation,
     label: state.name,
   }));
+  const [loading, setLoading] = useState(false); // State to track loading
 
   const handleRegisterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,7 +75,7 @@ export default function Login() {
           if (response.data.error) {
             setError(response.data.error);
           } else {
-            setError(null);
+            setError("Login Successful");
             setCookie("Bearer_token", `Bearer ${response.data.token}`);
             await (() => new Promise((resolve) => setTimeout(resolve, 1000)))();
             setUser(jwtDecode(response.data.token));
@@ -82,16 +84,22 @@ export default function Login() {
         })
         .catch((error) => {
           console.error("Registration error:", error);
-          setError("Registration failed. Please try again.");
+          // Access the backend error response
+          if (error.response && error.response.data) {
+            setError(error.response.data.error); // Set the error message from the backend
+          } else {
+            setError("Registration failed. Please try again.");
+          }
         });
     } catch (error) {
-      console.error("Error during registration:", error);
-      setError("An unexpected error occurred. Please try again later.");
+      console.log(error);
     }
   };
 
   const handleLoginSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true when the login starts
+
     const form = e.target as HTMLFormElement;
     const email = (form.elements.namedItem("loginEmail") as HTMLInputElement)
       .value;
@@ -105,21 +113,24 @@ export default function Login() {
         if (response.data.error) {
           setError(response.data.error);
         } else {
-          setError(null);
-
           setCookie("Bearer_token", `Bearer ${response.data.token}`);
           setIsExpired(response.data.expired);
           if (response.data.expiredDate) {
             setExpiredDate(new Date(response.data.expiredDate));
           }
           await (() => new Promise((resolve) => setTimeout(resolve, 1000)))();
+          setError("Login Successful");
           setUser(jwtDecode(response.data.token));
           router.push("/account");
         }
       })
       .catch((error) => {
         console.error("Login error:", error);
-        setError("Login failed. Please check your credentials.");
+        setError("Incorrect Username or Password.");
+      })
+      .finally(async () => {
+        setLoading(false); // Set loading to false after the login process finishes
+        await (() => new Promise((resolve) => setTimeout(resolve, 1000)))();
       });
   };
 
@@ -136,14 +147,9 @@ export default function Login() {
                   "linear-gradient(134deg, rgba(244, 244, 244, 0.40) 0%, rgba(244, 244, 244, 0.20) 100%)",
               }}
             >
-              <h2 className="font-bold !text-[25px] uppercase mb-6">
+              <h2 className="font-bold !text-[25px] uppercase !mb-6">
                 Login to Your Account
               </h2>
-              {error && (
-                <div className="border rounded-sm px-5 py-3 mb-4 border-[#bee5eb] text-[#0c5460] bg-[#d1ecf1]">
-                  {error}
-                </div>
-              )}
               <form onSubmit={handleLoginSubmit} className="pb-3">
                 <div className="mb-4">
                   <input
@@ -167,10 +173,23 @@ export default function Login() {
                 </div>
                 <Button
                   type="submit"
-                  className="bg-[#008cc2] hover:bg-[#0083b5] text-white"
+                  className="bg-[#008cc2] hover:bg-[#0083b5] text-white !flex !items-center !justify-center"
                   isFullWidth={true}
-                  text="Login"
+                  text={
+                    <>
+                      <span>Login&nbsp;&nbsp;</span>
+                      {loading && <DotLoader color="#fff" size={20} />}
+                    </>
+                  }
                 />
+
+                <div className="row mx-2 pt-2 justify-content-between">
+                  <div className="message-text">
+                    <div className="text-primary text-[#e9522a]">
+                      {loading ? <DotLoader color="#fff" size={20} /> : error}
+                    </div>
+                  </div>
+                </div>
                 <div className="text-right pt-2">
                   <div
                     className="uppercase text-[10px] cursor-pointer"
