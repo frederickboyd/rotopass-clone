@@ -5,15 +5,18 @@ import Link from "next/link";
 import { CgChevronRight } from "react-icons/cg";
 import { useAuth } from "@/contexts/AuthContext";
 import { deleteCookie } from "@/lib/cookie";
+import Button from "./common/Button";
+
 const UpLayout = () => {
-  const { user, setUser } = useAuth();
+  const { user, setUser, setIsExpired, setExpiredDate } = useAuth();
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const handleLogout = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleLogout = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     const target = e.target as HTMLAnchorElement;
-    if (target.pathname === "/logout") {
+    if (target.textContent?.toLowerCase() === "logout") {
       deleteCookie("Bearer_token");
       setShowDropdown(false);
+      await (() => new Promise((resolve) => setTimeout(resolve, 1000)))();
       setUser({
         id: "",
         username: "",
@@ -24,23 +27,23 @@ const UpLayout = () => {
         created_at: "",
         updated_at: "",
       });
+      setIsExpired(null);
+      setExpiredDate(new Date());
     }
   };
 
   return (
     <div className="relative bg-white">
-      <div className="mx-[120px] my-4">
-        <div className="flex justify-between items-end">
+      <div className="mx-[24px] pt-6 pb-2 lg:mx-[120px] lg:py-6">
+        <div className="flex justify-between items-center lg:items-end">
           <Link href="/">
-            <Image
+            <img
               src={"/images/rotopass.png"}
               alt="Logo"
-              className="w-[300px] h-[135px] object-contain logo-shadow"
-              width={300}
-              height={135}
+              className="w-auto h-[50px] lg:h-[135px] object-contain logo-shadow"
             />
           </Link>
-          <div className="flex gap-1">
+          <div className="hidden lg:flex gap-1">
             <Link
               href={"/account"}
               className="bg-[#d9d9d9] !text-[#212529] text-center px-[22px] py-[18px] mt-auto font-arupala font-semibold text-[16px] hover:bg-[#c6c6c6] transition-colors duration-300"
@@ -77,10 +80,32 @@ const UpLayout = () => {
               </Link>
             </div>
           </div>
+          <div className="flex lg:hidden gap-2">
+            <Link href={user.id ? "/logout" : "/login"} onClick={handleLogout}>
+              <Button
+                className="bg-[#063b42] hover:bg-[#031c1f] text-white !px-3 !py-2 text-[14px] font-arupala font-semibold"
+                text={user.id ? "Logout" : "Login"}
+              />
+            </Link>
+            <Link href={"/pricing"}>
+              <Button
+                className="bg-[#e9522a] hover:bg-[#d73e16] text-white !px-3 !py-2 text-[14px] font-arupala font-semibold"
+                text={"Join"}
+              />
+            </Link>
+            <div className="m-2">
+              <img
+                src={`/svgs/${showDropdown ? "close" : "menulist"}.svg`}
+                alt="menu"
+                className="cursor-pointer"
+                onClick={() => setShowDropdown((prev) => !prev)}
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div
-        className={`left-0 right-0 z-99 top-[100%] absolute mx-[120px] ${
+        className={`left-0 right-0 z-99 top-[100%] absolute lg:mx-[120px] ${
           showDropdown ? "block" : "hidden"
         }`}
         style={{

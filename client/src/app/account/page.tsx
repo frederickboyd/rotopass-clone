@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function AccountPage() {
   const { user, isExpired, expiredDate } = useAuth();
-
+  console.log({ isExpired, expiredDate });
   const formattedExpiredDate = expiredDate.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -24,7 +24,7 @@ export default function AccountPage() {
                   "linear-gradient(134deg, rgba(244, 244, 244, 0.40) 0%, rgba(244, 244, 244, 0.20) 100%)",
               }}
             >
-              <div className="text-[40px] font-bold tracking-[.5px] uppercase mb-4">
+              <div className="text-[24px] lg:text-[40px] font-bold tracking-[.5px] uppercase mb-4">
                 <div className="w-full p-4 text-white bg-[#063b42] font-arupala">
                   {user.first_name}'s dashboard
                 </div>

@@ -69,17 +69,14 @@ export default function Login() {
     try {
       api
         .post("users/register", registrationData)
-        .then((response) => {
+        .then(async (response) => {
           if (response.data.error) {
             setError(response.data.error);
           } else {
             setError(null);
             setCookie("Bearer_token", `Bearer ${response.data.token}`);
+            await (() => new Promise((resolve) => setTimeout(resolve, 1000)))();
             setUser(jwtDecode(response.data.token));
-            setIsExpired(response.data.expired);
-            if (response.data.expiredDate) {
-              setExpiredDate(new Date(response.data.expiredDate));
-            }
             router.push("/account");
           }
         })
@@ -111,8 +108,11 @@ export default function Login() {
           setError(null);
 
           setCookie("Bearer_token", `Bearer ${response.data.token}`);
-
-          await (() => new Promise((resolve) => setTimeout(resolve, 2000)))();
+          setIsExpired(response.data.expired);
+          if (response.data.expiredDate) {
+            setExpiredDate(new Date(response.data.expiredDate));
+          }
+          await (() => new Promise((resolve) => setTimeout(resolve, 1000)))();
           setUser(jwtDecode(response.data.token));
           router.push("/account");
         }
@@ -295,7 +295,7 @@ export default function Login() {
                 <p className="font-bold text-[12px] uppercase">T & C's</p>
                 <div className="flex mx-0 mb-4">
                   <div className="w-full pl-0">
-                    <label className="flex items-center space-x-2 cursor-pointer group relative">
+                    <label className="!flex items-center space-x-2 cursor-pointer group relative">
                       {/* Functional hidden checkbox */}
                       <input
                         type="checkbox"
