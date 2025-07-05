@@ -33,7 +33,7 @@ const UpLayout = () => {
 
     // Click on "Login"button
     else { 
-      window.location.href = "/login";
+      window.location.href = "/auth/login";
     }
   };
 
@@ -63,7 +63,7 @@ const UpLayout = () => {
               <span>{showDropdown ? "Less" : "More"}</span>
             </div>
             <Link
-              href={user.id ? "/logout" : "/login"}
+              href={user.id ? "/auth/logout" : "/auth/login"}
               onClick={handleLogout}
               className="bg-[#063b42] !text-[#fff] text-center px-[22px] py-[18px] mt-auto font-arupala font-semibold text-[16px] hover:bg-[#031c1f] transition-colors duration-300"
             >
@@ -86,7 +86,7 @@ const UpLayout = () => {
             </div>
           </div>
           <div className="flex lg:hidden gap-2">
-            <Link href={user.id ? "/logout" : "/login"} onClick={handleLogout}>
+            <Link href={user.id ? "/auth/logout" : "/auth/login"} onClick={handleLogout}>
               <Button
                 className="bg-[#063b42] hover:bg-[#031c1f] text-white !px-3 !py-2 text-[14px] font-arupala font-semibold"
                 text={user.id ? "Logout" : "Login"}
@@ -174,7 +174,7 @@ const UpLayout = () => {
             </div>
             <div className="p-3">
               <Link
-                href={user.id ? "/logout" : "/login"}
+                href={user.id ? "/auth/logout" : "/auth/login"}
                 onClick={handleLogout}
                 className="block px-[22px] py-[18px] font-arupala font-bold text-center cursor-pointer !text-white bg-[#063b42] hover:bg-[#031c1f] border border-1 border-[#063b42] transition-colors duration-300"
               >

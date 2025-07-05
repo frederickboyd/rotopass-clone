@@ -5,7 +5,7 @@ import Button from "@/components/common/Button";
 import { UsaStates } from "usa-states";
 import Link from "next/link";
 import api from "@/lib/api";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { jwtDecode } from "jwt-decode";
 import { setCookie } from "@/lib/cookie";
@@ -14,11 +14,16 @@ import { useMediaBreakpoints } from "@/hooks/useMediaBreakpoints";
 
 type IType = "login" | "register" | "forgotPassword";
 
-export default function Login() {
+export default function Auth() {
   const router = useRouter();
+  const params = useParams();
   const { matches, breakpoint } = useMediaBreakpoints();
   const { setUser, setIsExpired, setExpiredDate } = useAuth();
-  const [type, setType] = useState<IType>("login");
+  const validTypes: IType[] = ["login", "register", "forgotPassword"];
+  const initialType = validTypes.includes(params.type as IType)
+    ? (params.type as IType)
+    : "login";
+  const [type, setType] = useState<IType>(initialType);
   const [error, setError] = useState<string | null>(null);
   const allStates = new UsaStates().states;
   const stateOptions = allStates.map((state) => ({
@@ -30,23 +35,14 @@ export default function Login() {
   const handleRegisterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
-    const firstName = (
-      form.elements.namedItem("registerFirst") as HTMLInputElement
-    ).value;
-    const lastName = (
-      form.elements.namedItem("registerLast") as HTMLInputElement
-    ).value;
-    const email = (form.elements.namedItem("registerEmail") as HTMLInputElement)
-      .value;
-    const passwordInputs = form.querySelectorAll('input[type="password"]');
-    const password = (passwordInputs[0] as HTMLInputElement).value;
-    const confirmPassword = (passwordInputs[1] as HTMLInputElement).value;
-    const state = (
-      form.elements.namedItem("registerState") as HTMLSelectElement
-    ).value;
-    const termsChecked = (
-      form.elements.namedItem("termsCheckbox") as HTMLInputElement
-    )?.checked;
+    const firstName = (form.registerFirst as HTMLInputElement).value;
+    const lastName = (form.registerLast as HTMLInputElement).value;
+    const email = (form.registerEmail as HTMLInputElement).value;
+    const password = (form.registerPassword as HTMLInputElement).value;
+    const confirmPassword = (form.registercPassword as HTMLInputElement).value;
+    const state = (form.registerState as HTMLSelectElement).value;
+    const termsCheckbox = form.termsCheckbox as HTMLInputElement;
+    const termsChecked = termsCheckbox?.checked;
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
@@ -102,11 +98,8 @@ export default function Login() {
     setLoading(true); // Set loading to true when the login starts
 
     const form = e.target as HTMLFormElement;
-    const email = (form.elements.namedItem("loginEmail") as HTMLInputElement)
-      .value;
-    const password = (
-      form.elements.namedItem("loginPassword") as HTMLInputElement
-    ).value;
+    const email = (form.loginEmail as HTMLInputElement).value;
+    const password = (form.loginPassword as HTMLInputElement).value;
 
     api
       .post("/users/login", { email, password })
@@ -134,6 +127,37 @@ export default function Login() {
         await (() => new Promise((resolve) => setTimeout(resolve, 1000)))();
       });
   };
+
+  const handleForgotPasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const email = (form.resetEmail as HTMLInputElement).value;
+
+    api
+      .post("/users/forgot_password", { email })
+      .then((response) => {
+        if (response.data.error) {
+          setError(response.data.error);
+        } else {
+          setError(response.data.message);
+        }
+      })
+      .catch((error) => {
+        console.error("Forgot password error:", error);
+        setError("Failed to send password reset link. Please try again.");
+      });
+  };
+
+  useEffect(() => {
+    // Reset error message when type changes
+    setError("");
+    // If the type is not valid, default to "login"
+    if (!validTypes.includes(params.type as IType)) {
+      setType("login");
+    } else {
+      setType(params.type as IType);
+    }
+  }, [params.type]);
 
   return (
     <div>
@@ -192,15 +216,12 @@ export default function Login() {
                   </div>
                 </div>
                 <div className="text-right pt-2">
-                  <div
-                    className="uppercase text-[10px] cursor-pointer"
-                    onClick={() => {
-                      setError("");
-                      setType("forgotPassword");
-                    }}
+                  <Link
+                    href={"/auth/forgotPassword"}
+                    className="uppercase text-[10px] cursor-pointer !text-black"
                   >
                     Forgot Password?
-                  </div>
+                  </Link>
                 </div>
               </form>
               <hr className="text-[rgba(0,0,0,0.1)]" />
@@ -208,15 +229,13 @@ export default function Login() {
                 Need an Account?
               </div>
               <div className="pb-3">
-                <Button
-                  text="REGISTER HERE"
-                  isFullWidth
-                  className="bg-gray-800 hover:bg-gray-900 text-[12px]"
-                  onClick={() => {
-                    setError("");
-                    setType("register");
-                  }}
-                />
+                <Link href={"/auth/register"}>
+                  <Button
+                    text="REGISTER HERE"
+                    isFullWidth
+                    className="bg-gray-800 hover:bg-gray-900 text-[12px]"
+                  />
+                </Link>
               </div>
             </div>
           )}
@@ -234,15 +253,12 @@ export default function Login() {
               </h2>
               <p className="flex items-center text-[12px] text-[#767777]">
                 Already have an account?{" "}
-                <span
+                <Link
                   className="text-[#E9522A] ml-1 font-bold text-[15px] cursor-pointer"
-                  onClick={() => {
-                    setError("");
-                    setType("login");
-                  }}
+                  href={"/auth/login"}
                 >
                   LOGIN
-                </span>
+                </Link>
               </p>
               {error && (
                 <div className="border rounded-sm px-5 py-3 mb-4 border-[#bee5eb] text-[#0c5460] bg-[#d1ecf1]">
@@ -289,7 +305,7 @@ export default function Login() {
                 <div className="flex mx-0 mb-4 px-2">
                   <input
                     type="password"
-                    id="registerPassword"
+                    id="registercPassword"
                     placeholder="Re-enter Password"
                     autoComplete="new-password"
                     required
@@ -371,41 +387,46 @@ export default function Login() {
                 Forgot your password?
               </h2>
               <div className="p-4">
+                {error && (
+                  <div className="border rounded-sm px-5 py-3 mb-4 border-[#c3e6cb] text-[#155724] bg-[#d4edda]">
+                    {error}
+                  </div>
+                )}
                 <p>
                   Enter the email address for your account, and we'll send you a
                   link to reset your password.
                 </p>
-                <div className="mb-4">
-                  <input
-                    type="email"
-                    id="resetEmail"
-                    aria-describedby="emailHelp"
-                    placeholder="Email Address"
-                    required
-                    className="mt-1 block w-full rounded border border-gray-300 bg-white px-4 py-[7.2px] text-sm shadow-sm focus:outline-none focus:border-[#E9522A]"
+                <form onSubmit={handleForgotPasswordSubmit}>
+                  <div className="mb-4">
+                    <input
+                      type="email"
+                      id="resetEmail"
+                      aria-describedby="emailHelp"
+                      placeholder="Email Address"
+                      required
+                      className="mt-1 block w-full rounded border border-gray-300 bg-white px-4 py-[7.2px] text-sm shadow-sm focus:outline-none focus:border-[#E9522A]"
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    className="bg-[#008cc2] hover:bg-[#0083b5] text-white"
+                    isFullWidth={true}
+                    text="Submit"
                   />
-                </div>
-                <Button
-                  type="submit"
-                  className="bg-[#008cc2] hover:bg-[#0083b5] text-white"
-                  isFullWidth={true}
-                  text="Submit"
-                />
+                </form>
               </div>
               <hr className="text-[rgba(0,0,0,0.1)]" />
               <div className="py-3 font-bold text-[20px] uppercase">
                 Have an Account?
               </div>
               <div className="pb-3">
-                <Button
-                  text="SIGN IN"
-                  isFullWidth
-                  className="bg-gray-800 hover:bg-gray-900 text-[12px]"
-                  onClick={() => {
-                    setError("");
-                    setType("login");
-                  }}
-                />
+                <Link href={"/auth/login"}>
+                  <Button
+                    text="SIGN IN"
+                    isFullWidth
+                    className="bg-gray-800 hover:bg-gray-900 text-[12px]"
+                  />
+                </Link>
               </div>
             </div>
           )}

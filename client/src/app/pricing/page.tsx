@@ -181,7 +181,7 @@ export default function PricingPage() {
             </div>
             {!isAuthenticated && (
               <div className="text-center">
-                <Link href={"login?redirect=/pricing"}>
+                <Link href={"/auth/login?redirect=/pricing"}>
                   <Button
                     className="bg-[#e9522a] hover:bg-[#d73e16] text-white"
                     text="Please Login/Register before purchasing"

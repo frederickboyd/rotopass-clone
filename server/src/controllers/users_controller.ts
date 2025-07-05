@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { sendResetEmail } from "../lib/mailer";
 const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || "default_secret_key"; // Use a secure secret key in production
 const userController = {
@@ -80,14 +81,12 @@ const userController = {
 
       const isExpired = new Date() > oneYearLater;
       // Generate JWT token
-      res
-        .status(200)  
-        .json({
-          expired: isExpired,
-          error: null,
-          token,
-          expiredDate: oneYearLater,
-        });
+      res.status(200).json({
+        expired: isExpired,
+        error: null,
+        token,
+        expiredDate: oneYearLater,
+      });
     } catch (error) {
       console.error("Error logging in user:", error);
       res.status(500).json({ error: "Internal server error" });
@@ -124,6 +123,70 @@ const userController = {
     const isExpired = new Date() > oneYearLater;
 
     res.json({ expired: isExpired, expiredDate: oneYearLater });
+  },
+  forgotPasswordController: async (
+    req: Request,
+    res: Response
+  ): Promise<void> => {
+    const { email } = req.body;
+
+    try {
+      // Find user by email
+      const user = await prisma.user.findUnique({
+        where: { email },
+      });
+
+      if (!user) {
+        res.status(400).json({ error: "User not found" });
+        return;
+      }
+
+      const resetToken = jwt.sign({ email }, JWT_SECRET, {
+        expiresIn: "1h", // Token valid for 1 hour
+      });
+
+      await sendResetEmail(email, resetToken);
+      res
+        .status(200)
+        .json({
+          message:
+            "Check your email for instructions on how to reset your password.",
+        });
+    } catch (error) {
+      console.error("Error in forgot password:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  },
+  resetPasswordController: async (
+    req: Request,
+    res: Response
+  ): Promise<void> => {
+    const { email, password } = req.body;
+
+    try {
+      // Find user by email
+      const user = await prisma.user.findUnique({
+        where: { email },
+      });
+
+      if (!user) {
+        res.status(400).json({ error: "User not found" });
+        return;
+      }
+
+      const hashedPassword = bcrypt.hashSync(password, 10); // Hash the new password
+
+      // Update user's password
+      await prisma.user.update({
+        where: { email },
+        data: { password: hashedPassword },
+      });
+
+      res.status(200).json({ message: "Password reset successfully" });
+    } catch (error) {
+      console.error("Error resetting password:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
   },
 };
 

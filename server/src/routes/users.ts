@@ -4,5 +4,7 @@ const usersRoute = express.Router();
 
 usersRoute.post("/register", userController.registerUserController);
 usersRoute.post("/login", userController.loginUserController);
-usersRoute.post("/check_expires", userController.checkExpiresController)
+usersRoute.post("/check_expires", userController.checkExpiresController);
+usersRoute.post("/forgot_password", userController.forgotPasswordController);
+usersRoute.post("/reset_password", userController.resetPasswordController);
 export default usersRoute;

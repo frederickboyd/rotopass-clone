@@ -7,15 +7,15 @@ export async function middleware(request: NextRequest) {
   const token = await getCookie("Bearer_token");
   // Redirect to login if the user is not authenticated and trying to access a protected route
   if (path === "/account" && !token) {
-    return NextResponse.redirect(new URL("/login", request.url));
+    return NextResponse.redirect(new URL("/auth/login", request.url));
   }
 
   // Allow access to the login page without authentication
-  if (path === "/login" && token) {
+  if (path === "/auth/login" && token) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
-  if (path === "/logout") {
+  if (path === "/auth/logout") {
     return NextResponse.redirect(new URL("/", request.url));
   }
   // For all other routes, continue as normal
