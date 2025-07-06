@@ -26,10 +26,10 @@ export async function sendResetEmail(email: string, token: string) {
   );
   const source = await fs.readFile(templatePath, "utf-8");
   const template = Handlebars.compile(source);
-
+  console.log(`${process.env.FRONTEND_URL}/reset?token=${token}`);
   // inject the reset link (could also pass user.name, etc.)
   const html = template({
-    resetLink: `${process.env.FRONTEND_URL}/reset-password?token=${token}`,
+    resetLink: `${process.env.FRONTEND_URL}/reset?token=${token}`,
     email,
     time: getTimeInEDT(),
   });
