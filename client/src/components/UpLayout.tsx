@@ -1,15 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CgChevronRight } from "react-icons/cg";
 import { useAuth } from "@/contexts/AuthContext";
 import { deleteCookie } from "@/lib/cookie";
 import Button from "./common/Button";
+import { usePathname } from "next/navigation";
 
 const UpLayout = () => {
   const { user, setUser, setIsExpired, setExpiredDate } = useAuth();
   const [showDropdown, setShowDropdown] = useState(false);
+  const pathname = usePathname();
 
   const handleLogout = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     const target = e.target as HTMLAnchorElement;
@@ -36,6 +38,10 @@ const UpLayout = () => {
       window.location.href = "/auth/login";
     }
   };
+
+  useEffect(() => {
+    setShowDropdown(false);
+  }, [pathname]);
 
   return (
     <div className="relative bg-white">
