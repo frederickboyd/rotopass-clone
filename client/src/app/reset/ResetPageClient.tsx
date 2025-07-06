@@ -3,15 +3,11 @@ import React, { useState } from "react";
 import Button from "@/components/common/Button";
 import { jwtDecode } from "jwt-decode";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import api from "@/lib/api";
 import { setCookie } from "@/lib/cookie";
 import { useAuth } from "@/contexts/AuthContext";
 import { isValidJWT } from "@/lib/utils";
-
-type Props = {
-  token: string | null;
-};
 
 type DecodedToken = {
   email: string;
@@ -19,8 +15,11 @@ type DecodedToken = {
   iat: number;
 };
 
-export default function ResetPage({ token }: Props) {
+export default function ResetPage() {
   const { setUser, setIsExpired, setExpiredDate } = useAuth();
+  const params = useSearchParams();
+  debugger
+  const token = params.get("token");
   const router = useRouter();
   const [error, setError] = useState("");
   const [isLoginScreen, setIsLoginScreen] = useState(false);
@@ -124,7 +123,7 @@ export default function ResetPage({ token }: Props) {
   return (
     <div className="container !py-6">
       <div className="w-full md:w-2/3 mx-auto">
-        <h2 className="pl-4 mt-6 ">
+        <h2 className="pl-4 mt-6">
           {isLoginScreen ? "Login to Your Account" : "Reset your password"}
         </h2>
         {error && (

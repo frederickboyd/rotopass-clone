@@ -1,11 +1,10 @@
-import ResetPage from './ResetPageClient';
+import { Suspense } from "react";
+import ResetPage from "./ResetPageClient";
 
-export default function ResetPageWrapper({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const token = typeof searchParams.token === 'string' ? searchParams.token : null;
-
-  return <ResetPage token={token} />;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ResetPage />
+    </Suspense>
+  );
 }
