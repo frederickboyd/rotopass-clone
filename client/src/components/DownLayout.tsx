@@ -21,7 +21,7 @@ const DownLayout = () => {
               <h2 className="!mb-3">
                 <Link
                   href="/pricing"
-                  className="!text-white text-shadow text-[20px] font-bold font-arupala"
+                  className="!text-white text-shadow text-[20px] font-bold font-arupala hover-underline"
                 >
                   Join Now{" "}
                 </Link>
@@ -29,7 +29,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="/pricing"
-                  className="!text-white text-shadow text-[16px] font-dm"
+                  className="!text-white text-shadow text-[16px] font-dm hover-underline"
                 >
                   Join Rotopass{" "}
                 </Link>
@@ -37,7 +37,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="/about"
-                  className="!text-white text-shadow text-[16px] font-dm"
+                  className="!text-white text-shadow text-[16px] font-dm hover-underline"
                 >
                   About Us{" "}
                 </Link>
@@ -45,7 +45,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="https://www.fantasylife.com/"
-                  className="!text-white text-shadow text-[16px] font-dm text-wrap whitespace-break-spaces"
+                  className="!text-white text-shadow text-[16px] font-dm text-wrap whitespace-break-spaces hover-underline"
                 >
                   Fantasy Life Newsletter{" "}
                 </Link>
@@ -56,7 +56,7 @@ const DownLayout = () => {
               <h2 className="mb-3">
                 <Link
                   href="/pricing"
-                  className="!text-white text-shadow text-[20px] font-bold font-arupala"
+                  className="!text-white text-shadow text-[20px] font-bold font-arupala hover-underline"
                 >
                   The Bundle{" "}
                 </Link>
@@ -64,7 +64,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="/articles/nfl-content/peacock"
-                  className="!text-white text-shadow text-[16px] font-dm"
+                  className="!text-white text-shadow text-[16px] font-dm hover-underline"
                 >
                   Peacock{" "}
                 </Link>
@@ -72,7 +72,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="https://www.fantasylife.com/"
-                  className="!text-white text-shadow text-[16px] font-dm"
+                  className="!text-white text-shadow text-[16px] font-dm hover-underline"
                 >
                   Fantasy Life{" "}
                 </Link>
@@ -80,7 +80,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="/articles/nfl-content/what-is-footballguys"
-                  className="!text-white text-shadow text-[16px] font-dm"
+                  className="!text-white text-shadow text-[16px] font-dm hover-underline"
                 >
                   Football Guys{" "}
                 </Link>
@@ -88,7 +88,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="/articles/nfl-content/what-is-4for4"
-                  className="!text-white text-shadow text-[16px] font-dm"
+                  className="!text-white text-shadow text-[16px] font-dm hover-underline"
                 >
                   4for4{" "}
                 </Link>
@@ -96,7 +96,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="/articles/nfl-content/what-is-rotoviz"
-                  className="!text-white text-shadow text-[16px] font-dm"
+                  className="!text-white text-shadow text-[16px] font-dm hover-underline"
                 >
                   RotoViz{" "}
                 </Link>
@@ -104,7 +104,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="/articles/nfl-content/what-is-dlf"
-                  className="!text-white text-shadow text-[16px] font-dm"
+                  className="!text-white text-shadow text-[16px] font-dm hover-underline"
                 >
                   Dynasty League Football{" "}
                 </Link>
@@ -115,7 +115,7 @@ const DownLayout = () => {
               <h2 className="!mb-3">
                 <Link
                   href="/articles/nfl-content/16-reasons-to-buy"
-                  className="!text-white text-shadow text-[20px] font-bold font-arupala"
+                  className="!text-white text-shadow text-[20px] font-bold font-arupala hover-underline"
                 >
                   Why Buy{" "}
                 </Link>
@@ -123,7 +123,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="/pricing"
-                  className="!text-white text-shadow text-[16px] font-dm"
+                  className="!text-white text-shadow text-[16px] font-dm hover-underline"
                 >
                   The Best Bundle{" "}
                 </Link>
@@ -131,7 +131,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="/articles/nfl-content/testimonials"
-                  className="!text-white text-shadow text-[16px] font-dm"
+                  className="!text-white text-shadow text-[16px] font-dm hover-underline"
                 >
                   Testimonials{" "}
                 </Link>
@@ -139,7 +139,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="/articles/nfl-content/faq"
-                  className="!text-white text-shadow text-[16px] font-dm"
+                  className="!text-white text-shadow text-[16px] font-dm hover-underline"
                 >
                   FAQs{" "}
                 </Link>
@@ -150,7 +150,7 @@ const DownLayout = () => {
               <h2 className="!mb-3">
                 <Link
                   href="/pricing"
-                  className="!text-white text-shadow text-[20px] font-bold font-arupala"
+                  className="!text-white text-shadow text-[20px] font-bold font-arupala hover-underline"
                 >
                   More{" "}
                 </Link>
@@ -158,7 +158,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="/terms"
-                  className="!text-white text-shadow text-[16px] font-dm"
+                  className="!text-white text-shadow text-[16px] font-dm hover-underline"
                 >
                   Terms of Service{" "}
                 </Link>
@@ -166,7 +166,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="/privacy"
-                  className="!text-white text-shadow text-[16px] font-dm"
+                  className="!text-white text-shadow text-[16px] font-dm hover-underline"
                 >
                   Privacy{" "}
                 </Link>
@@ -174,7 +174,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="/support"
-                  className="!text-white text-shadow text-[16px] font-dm"
+                  className="!text-white text-shadow text-[16px] font-dm hover-underline"
                 >
                   Support{" "}
                 </Link>
@@ -182,7 +182,7 @@ const DownLayout = () => {
               <div className="mb-2">
                 <Link
                   href="/articles/nfl-content/troubleshooting"
-                  className="!text-white text-shadow text-[16px] font-dm"
+                  className="!text-white text-shadow text-[16px] font-dm hover-underline"
                 >
                   Troubleshooting{" "}
                 </Link>

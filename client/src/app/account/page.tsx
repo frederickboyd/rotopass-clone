@@ -37,7 +37,7 @@ export default function AccountPage() {
                   </h2>
                   <p>
                     If you already have an account please{" "}
-                    <a href="mailto:support@rotopass.com">contact support</a>
+                    <a href="mailto:support@rotopass.com" className="hover-underline">contact support</a>
                   </p>
                 </div>
               ) : (

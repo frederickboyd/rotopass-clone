@@ -141,7 +141,7 @@ const UpLayout = () => {
                 <div className="flex-1">
                   <Link
                     href={"/account"}
-                    className="bg-transparent text-[#e9522a] flex items-center"
+                    className="bg-transparent text-[#e9522a] flex items-center hover-underline"
                   >
                     My Profile
                     <CgChevronRight />
@@ -163,7 +163,7 @@ const UpLayout = () => {
                 <div className="flex-1">
                   <Link
                     href={"/support"}
-                    className="bg-transparent text-[#e9522a] flex items-center"
+                    className="bg-transparent text-[#e9522a] flex items-center hover-underline"
                   >
                     Customer Support
                     <CgChevronRight />
@@ -193,7 +193,7 @@ const UpLayout = () => {
                 <h2 className="!mb-3">
                   <Link
                     href={"/about"}
-                    className="text-[20px] font-bold leading-[36px] font-arupala !text-black"
+                    className="text-[20px] font-bold leading-[36px] font-arupala !text-black hover-underline"
                   >
                     About us & Our Partners
                   </Link>
@@ -201,7 +201,7 @@ const UpLayout = () => {
                 <div className="mb-2">
                   <Link
                     href={"/about"}
-                    className="text-[19px] leading-[12px] !text-black"
+                    className="text-[19px] leading-[12px] !text-black hover-underline"
                   >
                     About Rotopass
                   </Link>
@@ -209,7 +209,7 @@ const UpLayout = () => {
                 <div className="mb-2">
                   <Link
                     href={"/articles/nfl-content/peacock"}
-                    className="text-[19px] leading-[12px] !text-black"
+                    className="text-[19px] leading-[12px] !text-black hover-underline"
                   >
                     Peacock
                   </Link>
@@ -217,7 +217,7 @@ const UpLayout = () => {
                 <div className="mb-2">
                   <Link
                     href={"/articles/nfl-content/draft-guide"}
-                    className="text-[19px] leading-[12px] !text-black"
+                    className="text-[19px] leading-[12px] !text-black hover-underline"
                   >
                     Rotoworld Draft Guide
                   </Link>
@@ -225,7 +225,7 @@ const UpLayout = () => {
                 <div className="mb-2">
                   <Link
                     href={"/https://www.fantasylife.com"}
-                    className="text-[19px] leading-[12px] !text-black"
+                    className="text-[19px] leading-[12px] !text-black hover-underline"
                   >
                     Fantasy life
                   </Link>
@@ -233,7 +233,7 @@ const UpLayout = () => {
                 <div className="mb-2">
                   <Link
                     href={"/articles/nfl-content/what-is-footballguys"}
-                    className="text-[19px] leading-[12px] !text-black"
+                    className="text-[19px] leading-[12px] !text-black hover-underline"
                   >
                     FootballGuys
                   </Link>
@@ -241,7 +241,7 @@ const UpLayout = () => {
                 <div className="mb-2">
                   <Link
                     href={"/articles/nfl-content/what-is-4for4"}
-                    className="text-[19px] leading-[12px] !text-black"
+                    className="text-[19px] leading-[12px] !text-black hover-underline"
                   >
                     4fo4
                   </Link>
@@ -249,7 +249,7 @@ const UpLayout = () => {
                 <div className="mb-2">
                   <Link
                     href={"/articles/categories_here/what-is-rotoviz"}
-                    className="text-[19px] leading-[12px] !text-black"
+                    className="text-[19px] leading-[12px] !text-black hover-underline"
                   >
                     Rotoviz
                   </Link>
@@ -257,7 +257,7 @@ const UpLayout = () => {
                 <div className="mb-2">
                   <Link
                     href={"/articles/nfl-content/what-is-dlf"}
-                    className="text-[19px] leading-[12px] !text-black"
+                    className="text-[19px] leading-[12px] !text-black hover-underline"
                   >
                     Dynasty League Football
                   </Link>
@@ -267,7 +267,7 @@ const UpLayout = () => {
                 <h2 className="!mb-3">
                   <Link
                     href={"#"}
-                    className="text-[20px] font-bold leading-[36px] font-arupala !text-black"
+                    className="text-[20px] font-bold leading-[36px] font-arupala !text-black hover-underline"
                   >
                     Why buy the bundle?
                   </Link>
@@ -275,7 +275,7 @@ const UpLayout = () => {
                 <div className="mb-2">
                   <Link
                     href={"/articles/nfl-content/testimonials"}
-                    className="text-[19px] leading-[12px] !text-black"
+                    className="text-[19px] leading-[12px] !text-black hover-underline"
                   >
                     Testimonials
                   </Link>
@@ -285,7 +285,7 @@ const UpLayout = () => {
             <div className="p-3">
               <Link
                 href="/pricing"
-                className="cursor-pointer font-bold px-[22px] py-[18px] text-center !text-white font-arupala bg-[#e9522a] hover:bg-[#d73e16] text-[16px] w-full block transitions-color duration-300"
+                className="cursor-pointer font-bold px-[22px] py-[18px] text-center !text-white font-arupala bg-[#e9522a] hover:bg-[#d73e16] text-[16px] w-full block transitions-color duration-300 "
               >
                 Get the Rotopass bundle
               </Link>
