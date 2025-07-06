@@ -198,7 +198,7 @@ export default function Auth() {
                 </div>
                 <Button
                   type="submit"
-                  className="bg-[#008cc2] hover:bg-[#0083b5] text-white !flex !items-center !justify-center"
+                  className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white !flex !items-center !justify-center"
                   isFullWidth={true}
                   text={
                     <>
@@ -233,7 +233,7 @@ export default function Auth() {
                   <Button
                     text="REGISTER HERE"
                     isFullWidth
-                    className="bg-gray-800 hover:bg-gray-900 text-[12px]"
+                    className="bg-black hover:bg-black text-[12px]"
                   />
                 </Link>
               </div>
@@ -367,7 +367,7 @@ export default function Auth() {
                 </div>
                 <Button
                   type="submit"
-                  className="bg-[#008cc2] hover:bg-[#0083b5] text-white"
+                  className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white"
                   isFullWidth={true}
                   text="Register"
                 />
@@ -409,7 +409,7 @@ export default function Auth() {
                   </div>
                   <Button
                     type="submit"
-                    className="bg-[#008cc2] hover:bg-[#0083b5] text-white"
+                    className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white"
                     isFullWidth={true}
                     text="Submit"
                   />
@@ -424,7 +424,7 @@ export default function Auth() {
                   <Button
                     text="SIGN IN"
                     isFullWidth
-                    className="bg-gray-800 hover:bg-gray-900 text-[12px]"
+                    className="bg-black hover:bg-black text-[12px]"
                   />
                 </Link>
               </div>
@@ -454,7 +454,7 @@ export default function Auth() {
               <Button
                 type="submit"
                 text="Sign Up!"
-                className="bg-[#008cc2] hover:bg-[#0083b5] text-white"
+                className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white"
                 isFullWidth={matches.md ? false : true}
               />
             </form>

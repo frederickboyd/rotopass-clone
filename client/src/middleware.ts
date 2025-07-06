@@ -10,14 +10,15 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/auth/login", request.url));
   }
 
-  // Allow access to the login page without authentication
-  if (path === "/auth/login" && token) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
-
   if (path === "/auth/logout") {
     return NextResponse.redirect(new URL("/", request.url));
   }
+
+  // Allow access to the login page without authentication
+  if (path.includes("/auth") && token) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+
   // For all other routes, continue as normal
   return NextResponse.next();
 }

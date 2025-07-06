@@ -29,10 +29,10 @@ const UpLayout = () => {
       });
       setIsExpired(null);
       setExpiredDate(new Date());
-    } 
+    }
 
     // Click on "Login"button
-    else { 
+    else {
       window.location.href = "/auth/login";
     }
   };
@@ -86,15 +86,18 @@ const UpLayout = () => {
             </div>
           </div>
           <div className="flex lg:hidden gap-2">
-            <Link href={user.id ? "/auth/logout" : "/auth/login"} onClick={handleLogout}>
+            <Link
+              href={user.id ? "/auth/logout" : "/auth/login"}
+              onClick={handleLogout}
+            >
               <Button
-                className="bg-[#063b42] hover:bg-[#031c1f] text-white !px-3 !py-2 text-[14px] font-arupala font-semibold"
+                className="bg-[#063b42] hover:bg-[#031c1f] focus:bg-[#021113] text-white !px-3 !py-2 text-[14px] font-arupala font-semibold"
                 text={user.id ? "Logout" : "Login"}
               />
             </Link>
             <Link href={"/pricing"}>
               <Button
-                className="bg-[#e9522a] hover:bg-[#d73e16] text-white !px-3 !py-2 text-[14px] font-arupala font-semibold"
+                className="bg-[#e9522a] hover:bg-[#d73e16] focus:bg-[#cb3b15] text-white !px-3 !py-2 text-[14px] font-arupala font-semibold"
                 text={"Join"}
               />
             </Link>
@@ -167,7 +170,9 @@ const UpLayout = () => {
                   </Link>
                   <div className="text-[14px]">
                     <span className="text-[#6c757d]">need help, </span>
-                    <span className="text-[#e9522a] cursor-pointer">click here</span>
+                    <span className="text-[#e9522a] cursor-pointer">
+                      click here
+                    </span>
                   </div>
                 </div>
               </div>

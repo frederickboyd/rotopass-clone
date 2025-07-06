@@ -85,7 +85,7 @@ export default function Home() {
                     <div className="pr-0 lg:pr-4 mb-4">
                       <Link
                         href="/pricing"
-                        className="cursor-pointer font-bold px-[22px] py-[18px] text-center !text-white font-arupala bg-[#e9522a] hover:bg-[#d73e16] text-[16px] w-full block transitions-color duration-300"
+                        className="cursor-pointer font-bold px-[22px] py-[18px] text-center !text-white font-arupala bg-[#e9522a] hover:bg-[#d73e16] focus:bg-[#cb3b15] text-[16px] w-full block transitions-color duration-300"
                       >
                         Get the Rotopass bundle
                       </Link>
@@ -249,7 +249,7 @@ export default function Home() {
         <div className="my-4">
           <Link
             href="/pricing"
-            className="cursor-pointer font-semibold px-[22px] py-[18px] text-center !text-white font-arupala bg-[#e9522a] hover:bg-[#d73e16] text-[26px] w-full block transitions-color duration-300"
+            className="cursor-pointer font-semibold px-[22px] py-[18px] text-center !text-white font-arupala bg-[#e9522a] hover:bg-[#d73e16] focus:bg-[#cb3b15] text-[26px] w-full block transitions-color duration-300"
           >
             I'M READY. LET'S GO.
           </Link>
