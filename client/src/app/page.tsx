@@ -243,7 +243,7 @@ export default function Home() {
       </div>
       <section className="bg-black flex flex-col items-center py-4">
         <img src="/images/rp-logo.png" alt="logo" />
-        <div className="text-shadow font-arupala text-white text-[50px] font-bold leading-[50px] my-4">
+        <div className="text-shadow font-arupala text-white text-[50px] text-center font-bold leading-[50px] my-4">
           It's time to <span className="italic">up your game.</span>
         </div>
         <div className="my-4">

@@ -131,7 +131,7 @@ export default function PartnerAccordion() {
     >
       {accordionItems.map(({ value, title, content }) => (
         <Accordion.Item key={value} value={value} className="mb-4 border-none">
-          <Accordion.Header>
+          <Accordion.Header className="!mb-0">
             <Accordion.Trigger
               className="w-full bg-[#00313c] font-arupala text-[30px] text-white px-4 py-4 text-base font-bold uppercase flex justify-between items-center transition-colors hover:bg-[#004c5a] focus:outline-none"
               onClick={() => toggle(value)}
