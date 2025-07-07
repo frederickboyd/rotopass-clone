@@ -57,6 +57,7 @@ export default function PricingPage() {
       }
     } catch (err) {
       console.error("Payment method error:", err);
+      alert("Payment failed. Please try again.");
     }
   };
 
@@ -253,9 +254,8 @@ export default function PricingPage() {
                             required
                           />
                           <label
-                            className={`mb-2 ${
-                              termsError ? "text-red-500" : "text-black"
-                            }`}
+                            className={`mb-2 ${termsError ? "text-red-500" : "text-black"
+                              }`}
                             htmlFor="terms-cbx"
                           >
                             By checking this box, you indicate that you
