@@ -36,7 +36,7 @@ export async function sendResetEmail(email: string, type: string, token?: string
       subject = "Forgot Password Instructions";
 
       // Add resetLink to the template data
-      templateData.resetLink = `${process.env.FRONTEND_URL}/reset-password?token=${token}`;
+      templateData.resetLink = `${process.env.FRONTEND_URL}/reset?token=${token}`;
       break;
 
     default:

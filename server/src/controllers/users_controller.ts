@@ -144,8 +144,10 @@ const userController = {
       const resetToken = jwt.sign({ email }, JWT_SECRET, {
         expiresIn: "1h", // Token valid for 1 hour
       });
-
-      await sendResetEmail(email, resetToken);
+      
+      let type = "reset-password";
+      let token = resetToken;
+      await sendResetEmail(email,  type, token);
       res
         .status(200)
         .json({
