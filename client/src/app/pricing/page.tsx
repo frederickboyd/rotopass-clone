@@ -183,7 +183,7 @@ export default function PricingPage() {
               <div className="text-center">
                 <Link href={"/auth/login?redirect=/pricing"}>
                   <Button
-                    className="bg-[#e9522a] hover:bg-[#d73e16] focus:bg-[#cb3b15] text-white"
+                    className="bg-[#e9522a] hover:bg-[#d73e16] focus:bg-[#cb3b15] text-white active-boxshadow-orange"
                     text="Please Login/Register before purchasing"
                     isFullWidth={false}
                   />
@@ -300,7 +300,7 @@ export default function PricingPage() {
                         </div>
                       </div>
                       <Button
-                        className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white"
+                        className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white active-boxshadow-blue"
                         text="Pay Now"
                         isFullWidth
                         disabled={!isAuthenticated || !clientToken}

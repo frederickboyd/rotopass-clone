@@ -80,7 +80,7 @@ export default function AboutPage() {
         <div className="my-4">
           <Link
             href="/pricing"
-            className="cursor-pointer font-semibold px-[22px] py-[18px] text-center !text-white font-arupala bg-[#e9522a] hover:bg-[#d73e16] text-[26px] w-full block transitions-color duration-300"
+            className="cursor-pointer font-semibold px-[22px] py-[18px] text-center !text-white font-arupala bg-[#e9522a] hover:bg-[#d73e16] text-[26px] w-full block transitions-color duration-300 active-boxshadow-orange"
           >
             I'M READY. LET'S GO.
           </Link>

@@ -86,6 +86,31 @@ a {
     text-decoration: underline;
   }
 }
+.active-boxshadow-blue {
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(38, 181, 235, 0.5);
+  }
+}
+.active-boxshadow-orange {
+  &:active {
+    box-shadow: 0 0 0 .2rem rgba(233, 82, 42, 0.5);
+  }
+}
+.active-boxshadow-black {
+  &:active {
+    box-shadow: 0 0 0 .2rem rgba(38, 38, 38, 0.5);
+  }
+}
+.active-boxshadow-green {
+  &:active {
+    box-shadow: 0 0 0 .2rem rgba(43, 88, 94, 0.5);
+  }
+}
+.active-boxshadow-grey {
+  &:active {
+    box-shadow: 0 0 0 .2rem hsla(210, 2%, 75%, 0.5);
+  }
+}
 .logo-shadow {
   filter: drop-shadow(0 4px 7px rgba(0, 0, 0, 0.25));
 }

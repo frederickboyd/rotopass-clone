@@ -64,7 +64,7 @@ export default function AccountPage() {
                         <div className="p-4">
                           <Button
                             isFullWidth
-                            className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6] focus:bg-[#c0c0c0]"
+                            className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6] focus:bg-[#c0c0c0] active-boxshadow-grey"
                             text="GET CODE"
                           />
                         </div>
@@ -91,7 +91,7 @@ export default function AccountPage() {
                           >
                             <Button
                               isFullWidth
-                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6] focus:bg-[#c0c0c0]"
+                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6] focus:bg-[#c0c0c0] active-boxshadow-grey"
                               text="ACCESS"
                             />
                           </Link>
@@ -121,7 +121,7 @@ export default function AccountPage() {
                           >
                             <Button
                               isFullWidth
-                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6] focus:bg-[#c0c0c0]"
+                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6] focus:bg-[#c0c0c0] active-boxshadow-grey"
                               text="ACCESS"
                             />
                           </Link>
@@ -149,7 +149,7 @@ export default function AccountPage() {
                           >
                             <Button
                               isFullWidth
-                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6] focus:bg-[#c0c0c0]"
+                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6] focus:bg-[#c0c0c0] active-boxshadow-grey"
                               text="ACCESS"
                             />
                           </Link>
@@ -177,7 +177,7 @@ export default function AccountPage() {
                           >
                             <Button
                               isFullWidth
-                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6] focus:bg-[#c0c0c0]"
+                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6] focus:bg-[#c0c0c0] active-boxshadow-grey"
                               text="ACCESS"
                             />
                           </Link>
@@ -206,7 +206,7 @@ export default function AccountPage() {
                           >
                             <Button
                               isFullWidth
-                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6] focus:bg-[#c0c0c0]"
+                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6] focus:bg-[#c0c0c0] active-boxshadow-grey"
                               text="ACCESS"
                             />
                           </Link>

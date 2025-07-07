@@ -85,7 +85,7 @@ export default function Home() {
                     <div className="pr-0 lg:pr-4 mb-4">
                       <Link
                         href="/pricing"
-                        className="cursor-pointer font-bold px-[22px] py-[18px] text-center !text-white font-arupala bg-[#e9522a] hover:bg-[#d73e16] focus:bg-[#cb3b15] text-[16px] w-full block transitions-color duration-300"
+                        className="cursor-pointer font-bold px-[22px] py-[18px] text-center !text-white font-arupala bg-[#e9522a] hover:bg-[#d73e16] focus:bg-[#cb3b15] text-[16px] w-full block transitions-color duration-300 active-boxshadow-orange"
                       >
                         Get the Rotopass bundle
                       </Link>
@@ -141,7 +141,7 @@ export default function Home() {
                 <div className="w-auto">
                   <Link
                     href={"/pricing"}
-                    className="inline-block font-medium px-[22px] py-[18px] font-arupala text-center cursor-pointer text-[#e9522a] hover:bg-[#e9522a] hover:!text-white border border-[4px] border-[#e9522a] transition-colors duration-300"
+                    className="inline-block font-medium px-[22px] py-[18px] font-arupala text-center cursor-pointer text-[#e9522a] hover:bg-[#e9522a] hover:!text-white border border-[4px] border-[#e9522a] transition-colors duration-300 active-boxshadow-orange"
                   >
                     Get the Rotopass bundle
                   </Link>
@@ -197,7 +197,7 @@ export default function Home() {
                   <div className="mt-auto">
                     <Link
                       href={"/pricing"}
-                      className="block lg:inline-block px-[22px] py-[18px] font-arupala text-center cursor-pointer text-[#e9522a] hover:bg-[#e9522a] hover:!text-white border border-1 border-[#e9522a] transition-colors duration-300"
+                      className="block lg:inline-block px-[22px] py-[18px] font-arupala text-center cursor-pointer text-[#e9522a] hover:bg-[#e9522a] hover:!text-white border border-1 border-[#e9522a] transition-colors duration-300 active-boxshadow-orange"
                     >
                       Learn More
                     </Link>
@@ -232,7 +232,7 @@ export default function Home() {
               <div className="flex flex-wrap justify-center mb-4 relative">
                 <Link
                   href={"/pricing"}
-                  className="inline-block w-full lg:w-2/3 font-medium px-[22px] py-[18px] font-arupala text-center cursor-pointer text-[#e9522a] hover:bg-[#e9522a] hover:!text-white border border-[4px] border-[#e9522a] transition-colors duration-300"
+                  className="inline-block w-full lg:w-2/3 font-medium px-[22px] py-[18px] font-arupala text-center cursor-pointer text-[#e9522a] hover:bg-[#e9522a] hover:!text-white border border-[4px] border-[#e9522a] transition-colors duration-300 active-boxshadow-orange"
                 >
                   Learn More
                 </Link>
@@ -249,7 +249,7 @@ export default function Home() {
         <div className="my-4">
           <Link
             href="/pricing"
-            className="cursor-pointer font-semibold px-[22px] py-[18px] text-center !text-white font-arupala bg-[#e9522a] hover:bg-[#d73e16] focus:bg-[#cb3b15] text-[26px] w-full block transitions-color duration-300"
+            className="cursor-pointer font-semibold px-[22px] py-[18px] text-center !text-white font-arupala bg-[#e9522a] hover:bg-[#d73e16] focus:bg-[#cb3b15] text-[26px] w-full block transitions-color duration-300 active-boxshadow-orange"
           >
             I'M READY. LET'S GO.
           </Link>
