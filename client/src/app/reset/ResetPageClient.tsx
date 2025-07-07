@@ -18,7 +18,6 @@ type DecodedToken = {
 export default function ResetPage() {
   const { setUser, setIsExpired, setExpiredDate } = useAuth();
   const params = useSearchParams();
-  debugger
   const token = params.get("token");
   const router = useRouter();
   const [error, setError] = useState("");
