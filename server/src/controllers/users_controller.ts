@@ -29,8 +29,15 @@ const userController = {
           first_name: firstName,
           last_name: lastName,
           email,
-          password: hashedPassword,
           status: 0,
+        },
+      });
+
+      // Save this password to the UserPassword table
+      await prisma.userPassword.create({
+        data: {
+          user_id: newUser.id, // Assuming `newUser` is the created user
+          password: hashedPassword,
         },
       });
 
@@ -55,8 +62,13 @@ const userController = {
         return;
       }
 
+      // Find password record by user ID
+      const userPasswordRecord = await prisma.userPassword.findUnique({
+        where: { user_id: user.id },
+      });
+
       // Check password
-      const isPasswordValid = bcrypt.compareSync(password, user.password);
+      const isPasswordValid = userPasswordRecord && bcrypt.compareSync(password, userPasswordRecord.password);
       if (!isPasswordValid) {
         res.status(400).json({ error: "Incorrect Username or Password" });
         return;
@@ -185,9 +197,18 @@ const userController = {
 
       const hashedPassword = bcrypt.hashSync(password, 10); // Hash the new password
 
-      // Update user's password
-      await prisma.user.update({
-        where: { email },
+      // Check if the UserPassword record exists
+      const userPasswordRecord = await prisma.userPassword.findUnique({
+        where: { user_id: user.id },
+      });
+      
+      if (!userPasswordRecord) {
+        res.status(404).json({ error: "User password record not found" });
+        return;
+      }
+      // Update user's password in UserPassword table
+      await prisma.userPassword.update({
+        where: { id: userPasswordRecord.id }, // Use the unique identifier (id)
         data: { password: hashedPassword },
       });
 
