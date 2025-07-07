@@ -146,6 +146,7 @@ export default function Auth() {
       .catch((error) => {
         console.error("Forgot password error:", error);
         setError("Failed to send password reset link. Please try again.");
+        setFreeSignUpLoading(undefined)
       });
   };
 
