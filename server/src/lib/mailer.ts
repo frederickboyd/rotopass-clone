@@ -17,28 +17,44 @@ const transporter = nodemailer.createTransport({
 });
 
 // ② helper to send a reset email
-export async function sendResetEmail(email: string, token: string) {
-  // load template file (HTML with Handlebars placeholders)
-  const templatePath = path.join(
-    process.cwd(),
-    "templates",
-    "reset-password.html"
-  );
+export async function sendResetEmail(email: string, type: string, token?: string) { // type: "signup" | "reset-password"
+
+  let templatePath = "";
+  let subject = "";
+  let templateData: Record<string, any> = { email, time: getTimeInEDT() };
+
+  switch (type) {
+    case "signup":
+      // Load the signup email template
+      templatePath = path.join(process.cwd(), "templates", "welcome-to-fantasylife.html");
+      subject = "Welcome to Fantasy Life!";
+      break;
+
+    case "reset-password":
+      // Load the reset-password email template
+      templatePath = path.join(process.cwd(), "templates", "reset-password.html");
+      subject = "Forgot Password Instructions";
+
+      // Add resetLink to the template data
+      templateData.resetLink = `${process.env.FRONTEND_URL}/reset-password?token=${token}`;
+      break;
+
+    default:
+      throw new Error("Invalid email type");
+  }
+
+  // Read the template file
   const source = await fs.readFile(templatePath, "utf-8");
   const template = Handlebars.compile(source);
-  console.log(`${process.env.FRONTEND_URL}/reset?token=${token}`);
-  // inject the reset link (could also pass user.name, etc.)
-  const html = template({
-    resetLink: `${process.env.FRONTEND_URL}/reset?token=${token}`,
-    email,
-    time: getTimeInEDT(),
-  });
 
-  // ③ send mail
+  // Compile the HTML with the template data
+  const html = template(templateData);
+
+  // Send the email
   await transporter.sendMail({
     from: `${process.env.SMTP_FROM_NAME} <${process.env.SMTP_FROM_EMAIL}>`,
     to: email,
-    subject: "Forgot Password Instructions",
+    subject,
     html,
   });
 }

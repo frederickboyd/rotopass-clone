@@ -198,7 +198,7 @@ export default function Auth() {
                 </div>
                 <Button
                   type="submit"
-                  className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white !flex !items-center !justify-center"
+                  className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white !flex !items-center !justify-center active-boxshadow-blue"
                   isFullWidth={true}
                   text={
                     <>
@@ -233,7 +233,7 @@ export default function Auth() {
                   <Button
                     text="REGISTER HERE"
                     isFullWidth
-                    className="bg-black hover:bg-black text-[12px]"
+                    className="bg-black hover:bg-black text-[12px] active-boxshadow-black"
                   />
                 </Link>
               </div>
@@ -254,7 +254,7 @@ export default function Auth() {
               <p className="flex items-center text-[12px] text-[#767777]">
                 Already have an account?{" "}
                 <Link
-                  className="text-[#E9522A] ml-1 font-bold text-[15px] cursor-pointer"
+                  className="text-[#E9522A] ml-1 font-bold text-[15px] cursor-pointer active-boxshadow-blue"
                   href={"/auth/login"}
                 >
                   LOGIN
@@ -367,7 +367,7 @@ export default function Auth() {
                 </div>
                 <Button
                   type="submit"
-                  className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white"
+                  className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white active-boxshadow-blue"
                   isFullWidth={true}
                   text="Register"
                 />
@@ -409,7 +409,7 @@ export default function Auth() {
                   </div>
                   <Button
                     type="submit"
-                    className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white"
+                    className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white active-boxshadow-blue"
                     isFullWidth={true}
                     text="Submit"
                   />
@@ -424,7 +424,7 @@ export default function Auth() {
                   <Button
                     text="SIGN IN"
                     isFullWidth
-                    className="bg-black hover:bg-black text-[12px]"
+                    className="bg-black hover:bg-black text-[12px] active-boxshadow-black"
                   />
                 </Link>
               </div>
@@ -454,7 +454,7 @@ export default function Auth() {
               <Button
                 type="submit"
                 text="Sign Up!"
-                className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white"
+                className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white active-boxshadow-blue"
                 isFullWidth={matches.md ? false : true}
               />
             </form>

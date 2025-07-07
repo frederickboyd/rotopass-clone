@@ -161,7 +161,7 @@ export default function ResetPage() {
             </div>
             <div className="text-center">
               <Button
-                className="bg-[#e9522a] hover:bg-[#d73e16] focus:bg-[#cb3b15] text-white"
+                className="bg-[#e9522a] hover:bg-[#d73e16] focus:bg-[#cb3b15] text-white active-boxshadow-orange"
                 text="Submit"
                 isFullWidth={false}
               />
@@ -203,7 +203,7 @@ export default function ResetPage() {
             </div>
             <div className="text-center">
               <Button
-                className="bg-[#e9522a] hover:bg-[#d73e16] focus:bg-[#cb3b15] text-white"
+                className="bg-[#e9522a] hover:bg-[#d73e16] focus:bg-[#cb3b15] text-white active-boxshadow-orange"
                 text="Login"
                 isFullWidth={false}
               />

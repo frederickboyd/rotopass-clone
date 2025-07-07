@@ -57,12 +57,12 @@ const UpLayout = () => {
           <div className="hidden lg:flex gap-1">
             <Link
               href={"/account"}
-              className="bg-[#d9d9d9] !text-[#212529] text-center px-[22px] py-[18px] mt-auto font-arupala font-semibold text-[16px] hover:bg-[#c6c6c6] transition-colors duration-300"
+              className="bg-[#d9d9d9] !text-[#212529] text-center px-[22px] py-[18px] mt-auto font-arupala font-semibold text-[16px] hover:bg-[#c6c6c6] transition-colors duration-300 active-boxshadow-grey"
             >
               My Account
             </Link>
             <div
-              className="bg-[#d9d9d9] text-[#212529] text-center px-[22px] py-[18px] mt-auto font-arupala font-semibold text-[16px] cursor-pointer hover:bg-[#c6c6c6] transition-colors duration-300"
+              className="bg-[#d9d9d9] text-[#212529] text-center px-[22px] py-[18px] mt-auto font-arupala font-semibold text-[16px] cursor-pointer hover:bg-[#c6c6c6] transition-colors duration-300 active-boxshadow-grey"
               onMouseEnter={() => setShowDropdown(true)}
               onMouseLeave={() => setShowDropdown(false)}
             >
@@ -71,7 +71,7 @@ const UpLayout = () => {
             <Link
               href={user.id ? "/auth/logout" : "/auth/login"}
               onClick={handleLogout}
-              className="bg-[#063b42] !text-[#fff] text-center px-[22px] py-[18px] mt-auto font-arupala font-semibold text-[16px] hover:bg-[#031c1f] transition-colors duration-300"
+              className="bg-[#063b42] !text-[#fff] text-center px-[22px] py-[18px] mt-auto font-arupala font-semibold text-[16px] hover:bg-[#031c1f] transition-colors duration-300 active-boxshadow-green"
             >
               {user.id ? "Logout" : "Login"}
             </Link>
@@ -85,7 +85,7 @@ const UpLayout = () => {
               />
               <Link
                 href={"/pricing"}
-                className="bg-[#e9522a] !text-[#fff] text-center px-[22px] py-[18px] mt-auto font-arupala font-semibold text-[16px] hover:bg-[#d73e16] transition-colors duration-300"
+                className="bg-[#e9522a] !text-[#fff] text-center px-[22px] py-[18px] mt-auto font-arupala font-semibold text-[16px] hover:bg-[#d73e16] transition-colors duration-300 active-boxshadow-orange"
               >
                 Join
               </Link>
@@ -97,13 +97,13 @@ const UpLayout = () => {
               onClick={handleLogout}
             >
               <Button
-                className="bg-[#063b42] hover:bg-[#031c1f] focus:bg-[#021113] text-white !px-3 !py-2 text-[14px] font-arupala font-semibold"
+                className="bg-[#063b42] hover:bg-[#031c1f] focus:bg-[#021113] text-white !px-3 !py-2 text-[14px] font-arupala font-semibold active-boxshadow-green#008cc2"
                 text={user.id ? "Logout" : "Login"}
               />
             </Link>
             <Link href={"/pricing"}>
               <Button
-                className="bg-[#e9522a] hover:bg-[#d73e16] focus:bg-[#cb3b15] text-white !px-3 !py-2 text-[14px] font-arupala font-semibold"
+                className="bg-[#e9522a] hover:bg-[#d73e16] focus:bg-[#cb3b15] text-white !px-3 !py-2 text-[14px] font-arupala font-semibold active-boxshadow-orange"
                 text={"Join"}
               />
             </Link>
@@ -291,7 +291,7 @@ const UpLayout = () => {
             <div className="p-3">
               <Link
                 href="/pricing"
-                className="cursor-pointer font-bold px-[22px] py-[18px] text-center !text-white font-arupala bg-[#e9522a] hover:bg-[#d73e16] text-[16px] w-full block transitions-color duration-300 "
+                className="cursor-pointer font-bold px-[22px] py-[18px] text-center !text-white font-arupala bg-[#e9522a] hover:bg-[#d73e16] text-[16px] w-full block transitions-color duration-300 active-boxshadow-orange"
               >
                 Get the Rotopass bundle
               </Link>
