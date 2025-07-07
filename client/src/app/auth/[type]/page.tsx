@@ -25,12 +25,13 @@ export default function Auth() {
     : "login";
   const [type, setType] = useState<IType>(initialType);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false); // State to track loading
+  const [freeSignUpLoading, setFreeSignUpLoading] = useState<boolean | undefined>(undefined); // State for free sign-up loading
   const allStates = new UsaStates().states;
   const stateOptions = allStates.map((state) => ({
     value: state.abbreviation,
     label: state.name,
   }));
-  const [loading, setLoading] = useState(false); // State to track loading
 
   const handleRegisterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -148,6 +149,31 @@ export default function Auth() {
       });
   };
 
+  const handleFreeSignUpSubmit = (e: React.FormEvent) => {
+    setFreeSignUpLoading(true); // Set loading to true when the free sign-up starts
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const email = (form.freeSignUpEmail as HTMLInputElement).value;
+
+    if (!email) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    api
+      .post("/users/free_signup", { email })
+      .then((response) => {
+        if (response.data.error) {
+          setError(response.data.error);
+        } else {
+          setFreeSignUpLoading(false); // Set loading to false after successful sign-up
+        }
+      })
+      .catch((error) => {
+        console.error("Free sign-up error:", error);
+        setError("Failed to sign up for free updates. Please try again.");
+      });
+  }
   useEffect(() => {
     // Reset error message when type changes
     setError("");
@@ -444,20 +470,28 @@ export default function Auth() {
         </div>
         <div className="flex">
           <div className="w-full md:w-1/2 mx-auto px-2">
-            <form className="flex justify-center items-center flex-wrap">
-              <input
-                type="email"
-                required
-                placeholder="youremail@here.com"
-                className="px-[22px] py-[18px] font-semibold -tracking-[0.5px] border-none text-center mx-auto w-full md:flex-1 md:mr-2 sm:mb-2 md:mb-0 bg-white"
-              />
-              <Button
-                type="submit"
-                text="Sign Up!"
-                className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white active-boxshadow-blue"
-                isFullWidth={matches.md ? false : true}
-              />
-            </form>
+            {freeSignUpLoading !== false ? (
+              <form className="flex justify-center items-center flex-wrap" onSubmit={handleFreeSignUpSubmit}>
+                <input
+                  type="email"
+                  id="freeSignUpEmail"
+                  disabled={freeSignUpLoading}
+                  required
+                  placeholder="youremail@here.com"
+                  className="px-[22px] py-[18px] font-semibold -tracking-[0.5px] border-none text-center mx-auto w-full md:flex-1 md:mr-2 sm:mb-2 md:mb-0 bg-white"
+                />
+                {!freeSignUpLoading && (
+                  <Button
+                    type="submit"
+                    text="Sign Up!"
+                    className="bg-[#00a8e8] hover:bg-[#008cc2] focus:bg-[#0083b5] text-white active-boxshadow-blue"
+                    isFullWidth={matches.md ? false : true}
+                  />
+                )}
+              </form>
+            ) : (
+              <div className="text-[#28a745] text-center">Thanks for signing up!!</div>
+            )}
           </div>
         </div>
       </div>

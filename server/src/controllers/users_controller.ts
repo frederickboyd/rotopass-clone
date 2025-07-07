@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { sendResetEmail } from "../lib/mailer";
+import { getTimeInEDT } from "../lib/utils";
 const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || "default_secret_key"; // Use a secure secret key in production
 const userController = {
@@ -144,10 +145,16 @@ const userController = {
       const resetToken = jwt.sign({ email }, JWT_SECRET, {
         expiresIn: "1h", // Token valid for 1 hour
       });
-      
-      let type = "reset-password";
-      let token = resetToken;
-      await sendResetEmail(email,  type, token);
+
+      const templateData = {
+        email,
+        resetLink: `${process.env.FRONTEND_URL}/reset?token=${resetToken}`,
+        subject: "Reset Password Instructions",
+        time: getTimeInEDT(),
+      }
+
+      await sendResetEmail(email, "reset-password.html", templateData);
+
       res
         .status(200)
         .json({
@@ -190,6 +197,32 @@ const userController = {
       res.status(500).json({ error: "Internal server error" });
     }
   },
-};
+  freeSignUpController: async (
+    req: Request,
+    res: Response
+  ): Promise<void> => {
+    try {
+      const { email } = req.body;
 
+      if (!email) {
+        res.status(400).json({ error: "Email is required" });
+        return;
+      }
+
+      const templateData = {
+        email,
+        subject: "Welcome to Fantasy Life!",
+      }
+
+      await sendResetEmail(email, "welcome-to-fantasylife.html", templateData);
+
+      res.status(200).json({
+        message: "Check your email for a welcome message!",
+      });
+    } catch (error) {
+      console.error("Error in free signup:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  }
+}
 export default userController;

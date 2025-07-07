@@ -7,4 +7,5 @@ usersRoute.post("/login", userController.loginUserController);
 usersRoute.post("/check_expires", userController.checkExpiresController);
 usersRoute.post("/forgot_password", userController.forgotPasswordController);
 usersRoute.post("/reset_password", userController.resetPasswordController);
+usersRoute.post("/free_signup", userController.freeSignUpController);
 export default usersRoute;
