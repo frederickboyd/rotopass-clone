@@ -5,7 +5,6 @@ import Link from "next/link";
 
 export default function AccountPage() {
   const { user, isExpired, expiredDate } = useAuth();
-  console.log({ isExpired, expiredDate });
   const formattedExpiredDate = expiredDate.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",

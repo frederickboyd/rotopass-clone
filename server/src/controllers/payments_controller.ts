@@ -84,6 +84,7 @@ const paymentsController = {
             amount: parseFloat(result.subscription.price || "99.99"),
             billable_type: "merchant.braintree.subscription",
             billable_id: result.subscription.id,
+            deleted_on: null, // Set to null if it's optional
           },
         });
         const purchaseDate = new Date(newPurchase.created_on);
