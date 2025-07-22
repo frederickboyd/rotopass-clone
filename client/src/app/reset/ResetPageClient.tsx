@@ -74,7 +74,6 @@ export default function ResetPage() {
     const form = e.target as HTMLFormElement;
     const email = (form.loginEmail as HTMLInputElement).value;
     const password = (form.loginPassword as HTMLInputElement).value;
-    debugger;
     api
       .post("/users/login", { email, password })
       .then(async (response) => {

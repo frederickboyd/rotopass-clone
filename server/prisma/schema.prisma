@@ -19,24 +19,42 @@ enum FeatureStatus {
 }
 
 model User {
-  id          String        @id @default(uuid())
-  username    String?
-  first_name  String?
-  last_name   String?
-  status      Int           @default(0)
-  group_id    Int?
-  email       String        @unique
-  created_at  DateTime      @default(now())
-  updated_at  DateTime      @updatedAt
-  UserSetting UserSetting[]
-  Purchase    Purchase[]
+  id           String         @id @default(uuid())
+  username     String?
+  first_name   String?
+  last_name    String?
+  status       Int            @default(0)
+  group_id     Int?
+  email        String         @unique
+  created_at   DateTime       @default(now())
+  updated_at   DateTime       @updatedAt
+  UserSetting  UserSetting[]
+  Purchase     Purchase[]
   UserPassword UserPassword[]
+  peacock      PeacockCode?
+  promoCode    PromoCode?
+}
+
+model PeacockCode {
+  id        String    @id @default(cuid())
+  encrypted String
+  userId    String?    @unique
+  user      User?      @relation(fields: [userId], references: [id])
+  claimedAt DateTime?
+  createdAt DateTime  @default(now())
+}
+
+model PromoCode {
+  id     String @id @default(cuid())
+  code   String @unique
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
 }
 
 model UserPassword {
-  id       String  @id @default(uuid()) // Add a primary key for UserPassword
+  id       String @id @default(uuid()) // Add a primary key for UserPassword
   user_id  String @unique
-  user     User    @relation(fields: [user_id], references: [id]) // Correctly reference User's id
+  user     User   @relation(fields: [user_id], references: [id]) // Correctly reference User's id
   password String
 }
 

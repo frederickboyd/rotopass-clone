@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { sendResetEmail } from "../lib/mailer";
+import { sendResetEmail, sendWelcomeEmail } from "../lib/mailer";
 import { getTimeInEDT } from "../lib/utils";
 const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || "default_secret_key"; // Use a secure secret key in production
@@ -201,7 +201,7 @@ const userController = {
       const userPasswordRecord = await prisma.userPassword.findUnique({
         where: { user_id: user.id },
       });
-      
+
       if (!userPasswordRecord) {
         res.status(404).json({ error: "User password record not found" });
         return;
@@ -229,17 +229,52 @@ const userController = {
         res.status(400).json({ error: "Email is required" });
         return;
       }
+      const response = await fetch(
+        `https://api.beehiiv.com/v2/publications/${process.env.BEEHIIV_PUBLICATION_ID}/subscriptions`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.BEEHIIV_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            source: 'website-signup',
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          }),
+        }
+      );
+      const responseText = await response.text();
+      console.log('Beehiiv response:', response.status, responseText);
 
-      const templateData = {
-        email,
-        subject: "Welcome to Fantasy Life!",
+      if (!response.ok) {
+        let errorMessage = 'Subscription failed';
+
+        try {
+          const errorData = JSON.parse(responseText);
+          errorMessage = errorData.message || errorMessage;
+          console.log(errorMessage);
+        } catch (parseError) {
+          // fallback to default message
+        }
+
+        res.status(response.status).json({ error: errorMessage });
+        return;
       }
 
-      await sendResetEmail(email, "welcome-to-fantasylife.html", templateData);
+      await sendWelcomeEmail(email);
+      res.status(200).json({ success: true });
 
-      res.status(200).json({
-        message: "Check your email for a welcome message!",
-      });
+      // const templateData = {
+      //   email,
+      //   subject: "Welcome to Fantasy Life!",
+      // }
+
+      // await sendResetEmail(email, "welcome-to-fantasylife.html", templateData);
+
+      // res.status(200).json({
+      //   message: "Check your email for a welcome message!",
+      // });
     } catch (error) {
       console.error("Error in free signup:", error);
       res.status(500).json({ error: "Internal server error" });

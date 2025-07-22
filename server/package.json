@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "seed:peacock": "ts-node prisma/seedPeacockCodes.ts",
+    "seed:fantasy": "ts-node prisma/seedFantasyCodes.ts"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +15,7 @@
   "description": "",
   "dependencies": {
     "@prisma/client": "^6.11.0",
+    "axios": "^1.10.0",
     "bcrypt": "^6.0.0",
     "braintree": "^3.32.0",
     "cors": "^2.8.5",
@@ -28,9 +31,11 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.10",
-    "@types/node": "^24.0.8",
+    "@types/node": "^24.1.0",
     "@types/nodemailer": "^6.4.17",
+    "nodemon": "^3.1.10",
     "prisma": "^6.11.1",
+    "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   }

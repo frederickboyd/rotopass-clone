@@ -5,16 +5,28 @@ import path from "path";
 import Handlebars from "handlebars";
 import { getTimeInEDT } from "./utils";
 
-// ① configure transport via env vars
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT),
-  secure: !!process.env.SMTP_SECURE, // true for 465, false for other ports
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: true, // use SSL
   auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD
   },
+  logger: true,
+  debug: true
 });
+
+export const sendWelcomeEmail = async (toEmail: string) => {
+  transporter.sendMail({
+    from: `"Test" <${process.env.EMAIL_USER}>`,
+    to: toEmail,
+    subject: 'Test Email',
+    text: 'This is a test email from Nodemailer',
+  })
+    .then(() => console.log('✅ Email sent!'))
+    .catch(err => console.error('❌ Failed to send:', err));
+};
 
 // ② helper to send a reset email
 export async function sendResetEmail(email: string, templateName: string, templateData: { [key: string]: any }) { // type: "signup" | "reset-password"
