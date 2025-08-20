@@ -13,7 +13,7 @@ function loadData() {
 
     // Assuming your file has columns like 'Campaign' and 'State'
     const seedData = data.map((row: { [key: string]: any }) => ({
-        voucherCode: row['VoucherCode'],  // The column name from your spreadsheet
+        voucherCode: row['Voucher Code'],  // The column name from your spreadsheet
         state: row['State']            // Adjust as needed based on your sheet structure
     }));
 
