@@ -75,36 +75,6 @@ export default function AccountPage() {
                         </div>
                       </div>
                     </div>
-                    {/* <div className="w-full md:w-1/2 lg:w-1/3 mb-4 px-2">
-                      <div className="bg-white flex flex-col h-[100%]">
-                        <div className="p-4 mb-4 text-center">
-                          <img
-                            src="/images/slide3.png"
-                            alt="Fantasylife"
-                            className="max-w-full max-h-full"
-                          />
-                        </div>
-                        <div className="text-[#383838] p-4 px-6 my-auto leading-[20px] tracking-[.5px]">
-                          Get one year of access to FantasyLife+ Tier 1 ($39.99
-                          value) for free. Contact support@fantasylife.com for a
-                          special discount code to upgrade to tier 2.
-                        </div>
-                        <div className="p-4">
-                          <Link
-                            href={
-                              "https://www.rotopass.com/redeem/fantasylife?session_key="
-                            }
-                            target="_blank"
-                          >
-                            <Button
-                              isFullWidth
-                              className="!text-[#212529] bg-[#d9d9d9] hover:bg-[#c6c6c6] focus:bg-[#c0c0c0] active-boxshadow-grey"
-                              text="ACCESS"
-                            />
-                          </Link>
-                        </div>
-                      </div>
-                    </div> */}
                     <div className="w-full md:w-1/2 lg:w-1/3 mb-4 px-2">
                       <div className="bg-white flex flex-col h-[100%]">
                         <div className="p-4 mb-4 text-center">

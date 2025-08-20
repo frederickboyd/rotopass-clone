@@ -3,40 +3,37 @@ import { encrypt } from "../src/lib/encryption";
 
 const prisma = new PrismaClient();
 
-// Example dummy users and codes
-const seedData = [
-    { email: "alekseipigin@gmail.com", code: "PEACOCK-ABC123" },
-    { email: "alekseipigin319@gmail.com", code: "PEACOCK-XYZ456" },
-    { email: "124@gmail.com", code: "PEACOCK-TEST789" },
-];
+function loadData() {
+    const XLSX = require("xlsx");
+    const path = require("path");
+
+    const workbook = XLSX.readFile(path.join(__dirname, "peacock.xlsx"));
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+    const data = XLSX.utils.sheet_to_json(sheet);
+
+    // Assuming your file has columns like 'Campaign' and 'State'
+    const seedData = data.map((row: { [key: string]: any }) => ({
+        voucherCode: row['VoucherCode'],  // The column name from your spreadsheet
+        state: row['State']            // Adjust as needed based on your sheet structure
+    }));
+
+    console.log(seedData); // Log to check the data structure
+
+    return seedData;
+}
 
 async function main() {
-    for (const { email, code } of seedData) {
-        // const user = await prisma.user.findUnique({ where: { email } });
+    const seedData = loadData();
 
-        // if (!user) {
-        //     console.warn(`User with email ${email} not found. Skipping.`);
-        //     continue;
-        // }
-
-        const encrypted = encrypt(code);
-
-        // await prisma.peacockCode.upsert({
-        //     // where: { userId: user.id },
-        //     update: { encrypted },
-        //     create: {
-        //         userId: user.id,
-        //         encrypted,
-        //     },
-        // });
+    for (const { voucherCode, state } of seedData) {
+        const encrypted = encrypt(voucherCode);
 
         await prisma.peacockCode.create({
             data: {
-                encrypted
+                voucherCode: encrypted,
+                state
             },
         });
-
-        console.log(`Assigned code to ${email}`);
     }
 }
 

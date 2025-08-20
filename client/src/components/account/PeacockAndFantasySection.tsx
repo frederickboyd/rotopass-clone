@@ -21,8 +21,12 @@ export default function PeacockAndFantasySection() {
   };
 
   const openPeacockPage = () => {
-    const peacockUrl = "https://www.peacocktv.com/rotopass";
-    window.open(peacockUrl, "_blank");
+    if (peacockCode) {
+      const peacockUrl = `https://www.peacocktv.com/rotopass?voucher[]=${peacockCode}`;
+      window.open(peacockUrl, "_blank");
+    } else {
+      alert("Please retrieve your Peacock code first.");
+    }
   };
 
   const handleGetFantasyLifeCode = async () => {

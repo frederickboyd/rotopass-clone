@@ -119,9 +119,8 @@ const UpLayout = () => {
         </div>
       </div>
       <div
-        className={`left-0 right-0 z-99 top-[100%] absolute lg:mx-[120px] ${
-          showDropdown ? "block" : "hidden"
-        }`}
+        className={`left-0 right-0 z-99 top-[100%] absolute lg:mx-[120px] ${showDropdown ? "block" : "hidden"
+          }`}
         style={{
           boxShadow:
             "0px 8px 17px 0px rgba(0, 0, 0, .25), 0px 10px 15px 0px rgba(0, 0, 0, .25)",
@@ -229,12 +228,12 @@ const UpLayout = () => {
                   </Link>
                 </div>
                 <div className="mb-2">
-                  <Link
-                    href={"/https://www.fantasylife.com"}
+                  <a
+                    href="https://fantasylife.com"
                     className="text-[19px] leading-[12px] !text-black hover-underline"
                   >
                     Fantasy life
-                  </Link>
+                  </a>
                 </div>
                 <div className="mb-2">
                   <Link

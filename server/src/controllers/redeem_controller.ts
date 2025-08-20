@@ -12,7 +12,7 @@ export const getPeacockCode = async (req: AuthRequest, res: Response): Promise<v
         const userId = req.user?.id;
         if (!userId) res.status(401).json({ error: 'Unauthorized' });
 
-        // ✅ Check for active subscription via Purchase table
+        // Check for active subscription via Purchase table
         const activePurchase = await prisma.purchase.findFirst({
             where: {
                 owner_id: userId,
@@ -26,7 +26,7 @@ export const getPeacockCode = async (req: AuthRequest, res: Response): Promise<v
             });
         }
 
-        // ✅ Check if user already has a PeacockCode
+        // Check if user already has a PeacockCode
         let codeEntry = await prisma.peacockCode.findUnique({
             where: { userId },
         });
@@ -46,12 +46,12 @@ export const getPeacockCode = async (req: AuthRequest, res: Response): Promise<v
                 where: { id: nextAvailable?.id },
                 data: {
                     userId,
-                    claimedAt: new Date(),
+                    dateRedeem: new Date(),
                 },
             });
         }
 
-        const decrypted = decrypt(codeEntry.encrypted);
+        const decrypted = decrypt(codeEntry.voucherCode);
         res.status(200).json({ code: decrypted });
     } catch (err) {
         console.error('Error retrieving Peacock code:', err);

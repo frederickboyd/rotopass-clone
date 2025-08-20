@@ -36,12 +36,13 @@ model User {
 }
 
 model PeacockCode {
-  id        String    @id @default(cuid())
-  encrypted String
-  userId    String?    @unique
-  user      User?      @relation(fields: [userId], references: [id])
-  claimedAt DateTime?
-  createdAt DateTime  @default(now())
+  id          String    @id @default(cuid())
+  voucherCode String
+  state       String    @default("ACTIVE")
+  userId      String?   @unique
+  user        User?     @relation(fields: [userId], references: [id])
+  dateRedeem  DateTime?
+  createdAt   DateTime  @default(now())
 }
 
 model PromoCode {
