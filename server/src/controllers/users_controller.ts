@@ -262,19 +262,7 @@ const userController = {
         return;
       }
 
-      await sendWelcomeEmail(email);
       res.status(200).json({ success: true });
-
-      // const templateData = {
-      //   email,
-      //   subject: "Welcome to Fantasy Life!",
-      // }
-
-      // await sendResetEmail(email, "welcome-to-fantasylife.html", templateData);
-
-      // res.status(200).json({
-      //   message: "Check your email for a welcome message!",
-      // });
     } catch (error) {
       console.error("Error in free signup:", error);
       res.status(500).json({ error: "Internal server error" });
