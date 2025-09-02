@@ -240,6 +240,7 @@ const userController = {
           body: JSON.stringify({
             email,
             source: 'website-signup',
+            utm_source: 'api',
             timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
           }),
         }
