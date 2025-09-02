@@ -7,7 +7,7 @@ const accordionItems = [
   {
     value: "peacock",
     title: "PEACOCK",
-    content: `Peacock is now a part of the RotoPass bundle. When you purchase RotoPass, you get a free six month subscription to Peacock, which renews every year with your RotoPass bundle renewal. With Peacock, you get access to the most live sports of any streaming service including the exclusive Friday night NFL game from Brazil. You also get access to Matthew Berry's Fantasy Football Happy Hour and Fantasy Football Pregame shows. Get your college football fix with Big Ten Saturday Night plus, watch live events from the PGA Tour, IndyCar, WWE, and check out the action from across the pond with Premier League soccer. Redeem your offer today for this and so much more. Limited time offer. $5.99/mo. or then-current retail price (plus tax) after offer ends. Cancel anytime. Eligibility restrictions and terms apply.`,
+    content: `RotoPass gets you a special six-month subscription to Peacock at no additional cost to your membership. Watch nonstop LIVE sports all year long on Peacock, including every Sunday Night Football game so you can stay up to date on all your fantasy players every week. Join some of the most passionate college football fans in the country on Big Ten Saturday, and see some action from across the pond with Premier League soccer. Then, starting Oct 2025, stream LIVE NBA games all season long. Redeem your offer today and start streaming it all LIVE plus so much more. Limited time offer. $10.99/mo. or then-current retail price (plus tax) after offer ends. Cancel anytime. Eligibility restrictions and terms apply.`,
   },
   {
     value: "footballguys",

@@ -58,9 +58,7 @@ export default function PeacockAndFantasySection() {
             />
           </div>
           <div className="text-[#383838] p-4 px-6 my-auto leading-[20px] tracking-[.5px]">
-            Six months of free access to the most live sports of any streaming
-            service including NBC's Sunday Night Football, this year's exclusive
-            Friday NFL Brazil game, Big Ten Saturday Night and much more.
+            Get access to nonstop LIVE sports including every Sunday Night Football game, plus Matthew Berry's Fantasy Football Happy Hour, and beginning Oct 2025, LIVE NBA games all season long.
           </div>
           <div className="p-4">
             <Button
